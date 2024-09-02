@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>Skyblock Invest Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #item-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #item-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        #item-list li:last-child {
+            border-bottom: none;
+        }
+        table {
+            border-spacing: 20px;
+        }
+        tbody {
+            text-align: right;
+        }
+        #item-list {
+            float: left;
+            width: 50%;
+            display: table;
+        }
+        #item-list th, #item-list td {
+            display: table-cell;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        #item-list th {
+            background-color: #f2f2f2;
+        }
+        #input-form {
+            float: right;
+            width: 40%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Skyblock Invest Tool</h1>
+    <button id="update-button">Update price</button>
+    
+    <table id="item-list">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody id="item-list-body">
+        </tbody>
+    </table>
+    <form id="input-form">
+        <label for="item-name">Item Name:</label>
+        <input type="text" id="item-name" name="item-name"><br><br>
+        <label for="item-quantity">Item Quantity:</label>
+        <input type="number" id="item-quantity" name="item-quantity"><br><br>
+        <label for="item-price">Item Price:</label>
+        <input type="number" id="item-price" name="item-price"><br><br>
+        <label for="action">Action:</label>
+        <select id="action" name="action">
+            <option value="buy">Buy</option>
+            <option value="sell">Sell</option>
+        </select><br><br>
+        <button id="submit-button" type="submit">Submit</button>
+    </form>
+
+    <script>
+        const updateButton = document.getElementById('update-button');
+        const itemListBody = document.getElementById('item-list-body');
+        let itemList = [];
+
+        // click -> call backend -> get data from json -> call 3rd party api
+        updateButton.addEventListener('click', () => {
+            fetch('/update')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the table with the new data
+                    for (const key in data) {
+                        console.log(itemList);
+                        // if itemList contains key
+                        if (itemList.includes(key)) {
+                            // get the index of key in itemList
+                            const index = itemList.indexOf(key);
+                            // based on the index, udpate the corresponding row in table
+                            const row = itemListBody.rows[index];
+                            const priceCell = row.cells[1];
+                            const quantityCell = row.cells[2];
+                            priceCell.textContent = data[key]['avgPrice'];
+                            quantityCell.textContent = data[key]['quantity'];
+                        } else {
+                            // add to tracked item list
+                            itemList.push(key);
+                            // add a new row in the table
+                            const row = itemListBody.insertRow();
+                            const nameCell = row.insertCell(0);
+                            const priceCell = row.insertCell(1);
+                            const quantityCell = row.insertCell(2);
+                            nameCell.textContent = key;
+                            priceCell.textContent = data[key]['avgPrice'];
+                            quantityCell.textContent = data[key]['quantity'];
+                        }
+                        
+                        
+                    }   
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+        });
+
+        // Submit event for the input form
+        $("#input-form").on("submit", (e) => {
+            // Do not submit the form
+            e.preventDefault();
+
+            // Get the input fields
+            const itemName = $("#item-name").val().trim();
+            const itemQuantity = $("#item-quantity").val().trim();
+            const itemPrice = $("#item-price").val().trim();
+
+            // Send a register request
+            Registration.register(username, avatar, name, password,
+                () => {
+                    $("#register-form").get(0).reset();
+                    $("#register-message").text("You can sign in now.");
+                },
+                (error) => { $("#register-message").text(error); }
+            );
+        });
+        // init update
+        $(function() {
+            $("#update-button").click();
+        });
+    </script>
+
+
+    
+
+</body>
+</html>
