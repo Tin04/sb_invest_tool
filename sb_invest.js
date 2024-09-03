@@ -26,8 +26,8 @@ let itemIds = ['PET_LION'];
 let lbins = {};
 
 // for (const itemId of itemIds) {
-//     const apiUrl = `https://sky.coflnet.com/api/auctions/tag/${itemId}/active/bin`;
-//     // this fetch will return a list of 10 objects, each object has a structure of {id, price}
+// get auctions sold last week  https://sky.coflnet.com/api/auctions/tag/{itemTag}/sold
+// get data for graph https://sky.coflnet.com/api/item/price/{itemTag}/history/day
 //     // i want to store the price in lbins
 //     fetch(apiUrl)
 //       .then(response => response.json())
@@ -50,11 +50,48 @@ app.get('/', (req, res) => {
   res.redirect('/update');
 });
 
-app.get('/update', (req, res) => {
+// update the newest price for invested items
+app.get('/update', async (req, res) => {
   const items = JSON.parse(fs.readFileSync("./data/holding.json"));
-  res.json(items);
+  // Get the first key from the object
+  const itemKeys = Object.keys(items);
+  // let itemTag;
+  // let apiUrl;  // will this better as no create and delete obj?
+
+  // Loop through the keys and access the corresponding values
+
+  // Array to store all fetch promises
+  const fetchPromises = itemKeys.map(key => {
+    const itemTag = items[key]['itemTag'];
+    const apiUrl = `https://sky.coflnet.com/api/item/price/${itemTag}/bin`;
+
+    return fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        items[key]['price'] = data['lowest'];
+        console.log(items[key]['price']);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  });
+
+  try {
+    // Wait for all fetch promises to resolve
+    await Promise.all(fetchPromises);
+
+    // Save the updated data to the JSON file
+    fs.writeFileSync("./data/holding.json", JSON.stringify(items, null, " "));
+
+    // Send the updated items in the response
+    res.json(items);
+  } catch (error) {
+    console.error('Error updating prices:', error);
+    res.status(500).send('Error updating prices');
+  }
 });
 
+// update your investment holdings
 app.post('/submit', (req, res) => {
   const itemName = req.body['item-name'];
   const itemQuantity = req.body['item-quantity'];
@@ -62,9 +99,9 @@ app.post('/submit', (req, res) => {
 
   // Process the data here
   console.log(`Received form data: ${itemName}, ${itemQuantity}, ${itemPrice}`);
+  // open and update the holding.json
+  
 
-  // Return a response to the client
-  res.send('Form data received successfully!');
 });
 
 // Use a web server to listen at port 8000
