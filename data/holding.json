@@ -1,7 +1,8 @@
 {
-    "hyperion": {
-        "itemTag": "HYPERION",
-        "quantity": 1,
-        "avgPrice": 0
-    }
+ "hyperion": {
+  "itemTag": "HYPERION",
+  "quantity": 1,
+  "avgCost": 0,
+  "price": 960000000
+ }
 }

@@ -55,6 +55,7 @@
           <tr>
             <th>Name</th>
             <th>Price</th>
+            <th>Average Cost</th>
             <th>Quantity</th>
           </tr>
         </thead>
@@ -66,7 +67,7 @@
         <input type="text" id="item-name" name="item-name"><br><br>
         <label for="item-quantity">Item Quantity:</label>
         <input type="number" id="item-quantity" name="item-quantity"><br><br>
-        <label for="item-price">Item Price:</label>
+        <label for="item-price">Item Cost (average):</label>
         <input type="number" id="item-price" name="item-price"><br><br>
         <label for="action">Action:</label>
         <select id="action" name="action">
@@ -96,8 +97,10 @@
                             // based on the index, udpate the corresponding row in table
                             const row = itemListBody.rows[index];
                             const priceCell = row.cells[1];
-                            const quantityCell = row.cells[2];
-                            priceCell.textContent = data[key]['avgPrice'];
+                            const costCell = row.cells[2];
+                            const quantityCell = row.cells[3];
+                            priceCell.textContent = data[key]['price'];
+                            costCell.textContent = data[key]['avgCost'];
                             quantityCell.textContent = data[key]['quantity'];
                         } else {
                             // add to tracked item list
@@ -106,9 +109,11 @@
                             const row = itemListBody.insertRow();
                             const nameCell = row.insertCell(0);
                             const priceCell = row.insertCell(1);
-                            const quantityCell = row.insertCell(2);
+                            const costCell = row.insertCell(2);
+                            const quantityCell = row.insertCell(3);
                             nameCell.textContent = key;
-                            priceCell.textContent = data[key]['avgPrice'];
+                            priceCell.textContent = data[key]['price'];
+                            costCell.textContent = data[key]['avgCost'];
                             quantityCell.textContent = data[key]['quantity'];
                         }
                         
