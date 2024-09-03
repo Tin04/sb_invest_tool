@@ -13,37 +13,13 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // https://developer.hypixel.net/dashboard
-const apiKey = '19e207c4-93d9-4a64-9037-1366277f4f25';
-const itemToTrack = 'SPECIFIC_ITEM_ID';
+let apiKey;
 
 //const apiUrl = `https://api.hypixel.net/skyblock/auctions?key=${apiKey}&item=${itemToTrack}`;
 
 // https://sky.coflnet.com/api/auctions/tag/{ITEM_ID}/active/bin
 // assume i have a list of item ids
 // for each item id
-//
-let itemIds = ['PET_LION'];
-let lbins = {};
-
-// for (const itemId of itemIds) {
-// get auctions sold last week  https://sky.coflnet.com/api/auctions/tag/{itemTag}/sold
-// get data for graph https://sky.coflnet.com/api/item/price/{itemTag}/history/day
-//     // i want to store the price in lbins
-//     fetch(apiUrl)
-//       .then(response => response.json())
-//       .then(data => {
-//         // store startingBid in lbins
-//         lbins.push(data[0]['startingBid']);
-//       })
-//       .catch(error => {
-//         console.error('Error fetching data:', error);
-//       });
-// }
-
-async function fetchPrice() {
-  lbins = {};
-
-}
 
 // homepage show item list
 app.get('/', (req, res) => {
