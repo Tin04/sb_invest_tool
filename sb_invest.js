@@ -67,17 +67,40 @@ app.get('/update', async (req, res) => {
   }
 });
 
-// update your investment holdings
-app.post('/submit', (req, res) => {
-  const itemName = req.body['item-name'];
-  const itemQuantity = req.body['item-quantity'];
-  const itemPrice = req.body['item-price'];
+// update your investment holdings reocrd
+app.post('/record', (req, res) => {
+  const { itemName, itemTag, itemQuantity, itemPrice, action} = req.body;
+  const items = JSON.parse(fs.readFileSync("./data/holding.json"));
 
-  // Process the data here
-  console.log(`Received form data: ${itemName}, ${itemQuantity}, ${itemPrice}`);
-  // open and update the holding.json
-  
+  if (!itemName || !itemQuantity || !itemPrice || !action) {
+      res.json({ status: "error", error: "Missing record data." });
+      return;
+  } 
 
+  if (itemName in items) {
+    if (action === "buy") {
+      items[itemName]['avgCost'] = (items[itemName]['avgCost'] * items[itemName]['quantity'] + itemPrice * itemQuantity) / (items[itemName]['quantity'] + itemQuantity);
+      items[itemName]['quantity'] += itemQuantity;
+    } else {
+      items[itemName]['profit'] = (itemPrice - items[itemName]['avgCost']) * itemQuantity;
+      items[itemName]['quantity'] -= itemQuantity;
+    }
+  } else {
+    // new item
+    // new item need provide itemTag
+    if (!itemTag) {
+      res.json({ status: "error", error: "Missing item tag." });
+      return;
+    } 
+    if (action === "sell") {
+      res.json({ status: "error", error: "Cannot sell untracked item." });
+      return;
+    }
+    items[itemName] = { itemTag, quantity: itemQuantity, price: itemPrice, avgCost: itemPrice, profit: 0 };
+  }
+
+  fs.writeFileSync("./data/holding.json", JSON.stringify(items, null, " "));
+  res.json({ status: "success"});
 });
 
 // Use a web server to listen at port 8000
