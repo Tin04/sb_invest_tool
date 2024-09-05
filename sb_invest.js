@@ -45,7 +45,7 @@ app.get('/update', async (req, res) => {
       .then(response => response.json())
       .then(data => {
         items[key]['price'] = data['lowest'];
-        console.log(items[key]['price']);
+        //console.log(items[key]['price']);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -72,18 +72,38 @@ app.post('/record', (req, res) => {
   const { itemName, itemTag, itemQuantity, itemPrice, action} = req.body;
   const items = JSON.parse(fs.readFileSync("./data/holding.json"));
 
+  // ensure valid input from user
   if (!itemName || !itemQuantity || !itemPrice || !action) {
       res.json({ status: "error", error: "Missing record data." });
       return;
   } 
+  const parsedQuantity = parseFloat(itemQuantity);
+  if (isNaN(parsedQuantity)) {
+    res.json({ status: "error", error: "Invalid item quantity." });
+    return;
+  }
+  const parsedPrice = parseFloat(itemPrice);
+  if (isNaN(parsedPrice)) {
+    res.json({ status: "error", error: "Invalid item price." });
+    return;
+  }
 
   if (itemName in items) {
+    // can update incorrect itemTag
+    if (itemTag != "") {
+      items[itemName]['itemTag'] = itemTag;
+    }
     if (action === "buy") {
-      items[itemName]['avgCost'] = (items[itemName]['avgCost'] * items[itemName]['quantity'] + itemPrice * itemQuantity) / (items[itemName]['quantity'] + itemQuantity);
-      items[itemName]['quantity'] += itemQuantity;
+      items[itemName]['avgCost'] = (items[itemName]['avgCost'] * items[itemName]['quantity'] + parsedPrice * parsedQuantity) / (items[itemName]['quantity'] + parsedQuantity);
+      items[itemName]['quantity'] = parseFloat(items[itemName]['quantity']) + parsedQuantity;
     } else {
-      items[itemName]['profit'] = (itemPrice - items[itemName]['avgCost']) * itemQuantity;
-      items[itemName]['quantity'] -= itemQuantity;
+      // if holding < amount
+      if (items[itemName]['quantity'] < parsedQuantity) {
+        res.json({ status: "error", error: "Not enough holding." });
+        return;
+      }
+      items[itemName]['profit'] = (itemPrice - items[itemName]['avgCost']) * parsedQuantity;
+      items[itemName]['quantity'] = parseFloat(items[itemName]['quantity']) - parsedQuantity;
     }
   } else {
     // new item
@@ -95,8 +115,8 @@ app.post('/record', (req, res) => {
     if (action === "sell") {
       res.json({ status: "error", error: "Cannot sell untracked item." });
       return;
-    }
-    items[itemName] = { itemTag, quantity: itemQuantity, price: itemPrice, avgCost: itemPrice, profit: 0 };
+    }    
+    items[itemName] = { itemTag, quantity: parsedQuantity, price: parsedPrice, avgCost: parsedPrice, profit: 0 };
   }
 
   fs.writeFileSync("./data/holding.json", JSON.stringify(items, null, " "));
