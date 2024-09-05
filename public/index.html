@@ -6,80 +6,202 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>Skyblock Invest Tool</title>
     <style>
+        * {
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
         body {
             font-family: Arial, sans-serif;
-        }
-        #item-list {
-            list-style: none;
-            padding: 0;
+            background-color: #f4f4f4;
             margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
         }
-        #item-list li {
+
+        #content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+            margin-top: 20px;
+        }
+
+        #list-title {
+            white-space: nowrap;
+            font-size: 24px;
+            margin: 20px;
+            text-align: left;
+        }
+
+        #item-list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 10px;
-            border-bottom: 1px solid #ccc;
         }
-        #item-list li:last-child {
-            border-bottom: none;
+
+        #update-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
         }
-        table {
-            border-spacing: 20px;
+
+        #update-button:hover {
+            background-color: #45a049; /* Specific hover color */
         }
-        tbody {
-            text-align: right;
-        }
+
         #item-list {
-            float: left;
-            width: 50%;
-            display: table;
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
-        #item-list th, #item-list td {
-            display: table-cell;
+
+        #toggle-bar {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #toggle-bar:hover {
+            background-color: #45a049; /* Generic hover color */
+        }
+
+        #record-form {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 10px; /* Add padding even when the form is collapsed */
+            background-color: #f9f9f9;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.3s ease;
+        }
+
+        #toggle-bar.active + #record-form {
+            max-height: 500px;
+            padding: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
             padding: 8px;
-            border: 1px solid #ddd;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-        #item-list th {
+
+        button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049; /* Generic hover color */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
             background-color: #f2f2f2;
         }
-        #record-form {
-            float: right;
-            width: 40%;
+
+        .center {
+            text-align: center;
+        }
+
+        .warning {
+            color: red;
         }
     </style>
 </head>
 <body>
-    <h1>Skyblock Invest Tool</h1>
-    <button id="update-button">Update price</button>
-    
-    <table id="item-list">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Average Cost</th>
-            <th>Quantity</th>
-          </tr>
-        </thead>
-        <tbody id="item-list-body">
-        </tbody>
-    </table>
-    <form id="record-form">
-        <label for="item-name">Item Name:</label>
-        <input type="text" id="item-name" name="item-name"><br><br>
-        <label for="item-tag">Item Tag (Metadata):</label>
-        <input type="text" id="item-tag" name="item-tag"><br><br>
-        <label for="item-quantity">Item Quantity:</label>
-        <input type="number" id="item-quantity" name="item-quantity"><br><br>
-        <label for="item-price">Item Cost (average):</label>
-        <input type="number" id="item-price" name="item-price"><br><br>
-        <label for="action">Action:</label>
-        <select id="action" name="action">
-            <option value="buy">Buy</option>
-            <option value="sell">Sell</option>
-        </select><br><br>
-        <button id="submit-button" type="submit">Submit</button>
-        <div id="record-message" class="warning center"></div>
-    </form>
+    <div id="content">
+        <h1>Skyblock Invest Tool</h1>
+        <div id="form">
+        <div id="toggle-bar" onclick="toggleForm()">Input Your Record</div>
+        <!-- <div>
+            <button id="toggle-form-button" onclick="toggleForm()">Toggle Form</button>
+        </div> -->
+        
+        <form id="record-form">
+            <label for="item-name">Item Name:</label>
+            <input type="text" id="item-name" name="item-name"><br><br>
+            <label for="item-tag">Item Tag (Metadata):</label>
+            <input type="text" id="item-tag" name="item-tag"><br><br>
+            <label for="item-quantity">Item Quantity:</label>
+            <input type="number" id="item-quantity" name="item-quantity"><br><br>
+            <label for="item-price">Item Cost (average):</label>
+            <input type="number" id="item-price" name="item-price"><br><br>
+            <label for="action">Action:</label>
+            <select id="action" name="action">
+                <option value="buy">Buy</option>
+                <option value="sell">Sell</option>
+            </select><br><br>
+            <button id="submit-button" type="submit">Submit</button>
+            <div id="record-message" class="warning center"></div>
+        </form>
+        </div>
 
+        <div id="item-list-header">
+            <h2 id="list-title">Item List</h2>
+            <button id="update-button">Update Price</button>
+        </div>
+        <table id="item-list">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Average Cost</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody id="item-list-body">
+                <!-- Table content will go here -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function toggleForm() {
+            var form = document.getElementById("record-form");
+            form.style.display = form.style.display === "none" ? "block" : "none";
+            document.getElementById('toggle-bar').classList.toggle('active');
+        }
+    </script>
     <script src="scripts/record.js"></script>
     <script>
         const updateButton = document.getElementById('update-button');
@@ -153,6 +275,8 @@
         // init update
         $(function() {
             $("#update-button").click();
+            var form = document.getElementById("record-form");
+            form.style.display = "none";
         });
     </script>
 
