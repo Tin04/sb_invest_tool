@@ -38,6 +38,7 @@
         <div id="item-list-header">
             <h2 id="list-title">Item List</h2>
             <button id="update-button">Update Price</button>
+            <div id="timer">Fire Sale Countdown: <span id="countdown"></span></div>
         </div>
         <table id="item-list">
             <thead>
@@ -59,6 +60,30 @@
             form.style.display = form.style.display === "none" ? "block" : "none";
             document.getElementById('toggle-bar').classList.toggle('active');
         }
+    </script>
+    
+    <script>
+    // timer for next fire sale
+    // dummy date for testing timer
+    const eventDate = new Date(2024, 8, 10, 15, 0, 0).getTime();
+    
+    const timer = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = eventDate - now;
+    
+        if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById("countdown").innerHTML = "Event has started!";
+            return;
+        }
+    
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+        document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
     </script>
     <script src="scripts/record.js"></script>
     <script>
@@ -137,8 +162,6 @@
             form.style.display = "none";
         });
     </script>
-
-
     
 
 </body>

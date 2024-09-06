@@ -23,17 +23,27 @@ body {
 }
 
 #list-title {
-    white-space: nowrap;
     font-size: 24px;
     margin: 20px;
     text-align: left;
 }
 
 #item-list-header {
+    white-space: nowrap;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+}
+
+#timer {
+    font-size: 24px;
+    padding: 10px;
+    margin-left: 50%;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    display: inline-block;
 }
 
 #update-button {
