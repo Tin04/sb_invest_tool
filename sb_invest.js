@@ -132,16 +132,6 @@ app.get('/firesale', (req, res) => {
       if (data['success'] === false) {
         res.json({ status: "error", error: "Fail to fetch data" });
       } else {
-        // epoch converter
-        // const epochStart = data['sales'][0]['start'];
-        // const epochEnd = data['sales'][0]['end'];
-        // data['sales'][0]['start'] = new Date(epochStart).toString();
-        // data['sales'][0]['end'] = new Date(epochEnd).toString();
-        // make the epoch to string before sending to frontend
-        //data['sales'][0]['start'] = data['sales'][0]['start'].toString();
-        //data['sales'][0]['end'] = data['sales'][0]['end'].toString();
-
-        // maybe set distance at be
         res.json({ status: "success", data: data['sales'][0] });
       }
     })
