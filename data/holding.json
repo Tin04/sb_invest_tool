@@ -3,7 +3,21 @@
   "itemTag": "HYPERION",
   "quantity": 1,
   "avgCost": 0,
-  "price": 958999000,
+  "price": 959000000,
   "profit": 0
+ },
+ "apple": {
+  "itemTag": "APPLE",
+  "quantity": 3,
+  "price": 5,
+  "avgCost": 1,
+  "profit": 0
+ },
+ "black lion skin": {
+  "itemTag": "SKIN_LION_BLACK_PET",
+  "quantity": 1,
+  "avgCost": 85000000,
+  "profit": 0,
+  "price": 68000000
  }
 }
