@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // https://developer.hypixel.net/dashboard
-let apiKey;
+let apiKey = 'fdbb7790-7e8d-4faf-b503-ab23d98b2f41';
 
 //const apiUrl = `https://api.hypixel.net/skyblock/auctions?key=${apiKey}&item=${itemToTrack}`;
 
@@ -121,6 +121,33 @@ app.post('/record', (req, res) => {
 
   fs.writeFileSync("./data/holding.json", JSON.stringify(items, null, " "));
   res.json({ status: "success"});
+});
+
+app.get('/firesale', (req, res) => {
+  const apiUrl = 'https://api.hypixel.net/v2/skyblock/firesales';
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      if (data['success'] === false) {
+        res.json({ status: "error", error: "Fail to fetch data" });
+      } else {
+        // epoch converter
+        // const epochStart = data['sales'][0]['start'];
+        // const epochEnd = data['sales'][0]['end'];
+        // data['sales'][0]['start'] = new Date(epochStart).toString();
+        // data['sales'][0]['end'] = new Date(epochEnd).toString();
+        // make the epoch to string before sending to frontend
+        //data['sales'][0]['start'] = data['sales'][0]['start'].toString();
+        //data['sales'][0]['end'] = data['sales'][0]['end'].toString();
+
+        // maybe set distance at be
+        res.json({ status: "success", data: data['sales'][0] });
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
 });
 
 // Use a web server to listen at port 8000
