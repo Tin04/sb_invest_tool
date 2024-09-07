@@ -22,49 +22,60 @@ body {
     margin-top: 20px;
 }
 
-#list-title {
-    font-size: 24px;
-    margin: 20px;
-    text-align: left;
-}
-
-#item-list-header {
-    white-space: nowrap;
+#item-list-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
 }
 
-#timer {
-    font-size: 24px;
-    padding: 10px;
-    margin-left: 50%;
-    background-color: #333;
-    color: #fff;
-    border-radius: 4px;
-    display: inline-block;
+#item-list-header {
+    display: flex;
+    align-items: center;
+}
+
+#list-title {
+    margin-right: 20px;
+    padding: 0;
+    flex-grow: 1;
+    white-space: nowrap;
 }
 
 #update-button {
+    margin-right: 10px;
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-bottom: 20px;
 }
 
-#update-button:hover {
-    background-color: #45a049; /* Specific hover color */
+#timer {
+    white-space: nowrap;
+    font-size: 24px;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    display: inline-block;
 }
 
-#item-list {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+/* when screen width <= 600px, change the layout of #item-list-container to a vertical column and aligns contents to the left. */
+@media (max-width: 600px) {
+    #item-list-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #item-list-header {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: space-between;
+    }
 }
+
 
 #toggle-bar {
     width: 100%;
