@@ -67,58 +67,46 @@
     </div>
     <script>
         function toggleForm() {
-            var form = document.getElementById("record-form");
+            var form = $("#record-form")[0];
             form.style.display = form.style.display === "none" ? "block" : "none";
-            document.getElementById('toggle-bar').classList.toggle('active');
+            $("#toggle-bar").toggleClass("active");
         }
-    </script>
-    
-    <script>
-    
     </script>
     <script src="scripts/record.js"></script>
     <script>
-        const updateButton = document.getElementById('update-button');
-        const itemListBody = document.getElementById('item-list-body');
+        const updateButton = $('#update-button');
+        const itemListBody = $('#item-list-body');
         let itemList = [];
 
         // click -> call backend -> get data from json -> call 3rd party api
-        updateButton.addEventListener('click', () => {
+        updateButton.on('click', () => {
             fetch('/update')
                 .then(response => response.json())
                 .then(data => {
                     // Update the table with the new data
-                    for (const key in data) {
+                    $.each(data, function(key, value) {
                         console.log(itemList);
                         // if itemList contains key
                         if (itemList.includes(key)) {
                             // get the index of key in itemList
                             const index = itemList.indexOf(key);
                             // based on the index, udpate the corresponding row in table
-                            const row = itemListBody.rows[index];
-                            const priceCell = row.cells[1];
-                            const costCell = row.cells[2];
-                            const quantityCell = row.cells[3];
-                            priceCell.textContent = data[key]['price'];
-                            costCell.textContent = data[key]['avgCost'];
-                            quantityCell.textContent = data[key]['quantity'];
+                            const row = itemListBody.find('tr').eq(index);
+                            row.find('td').eq(1).text(value.price);
+                            row.find('td').eq(2).text(value.avgCost);
+                            row.find('td').eq(3).text(value.quantity);
                         } else {
                             // add to tracked item list
                             itemList.push(key);
                             // add a new row in the table
-                            const row = itemListBody.insertRow();
-                            const nameCell = row.insertCell(0);
-                            const priceCell = row.insertCell(1);
-                            const costCell = row.insertCell(2);
-                            const quantityCell = row.insertCell(3);
-                            nameCell.textContent = key;
-                            priceCell.textContent = data[key]['price'];
-                            costCell.textContent = data[key]['avgCost'];
-                            quantityCell.textContent = data[key]['quantity'];
+                            const newRow = $('<tr>');
+                            newRow.append($('<td>').text(key));
+                            newRow.append($('<td>').text(value.price));
+                            newRow.append($('<td>').text(value.avgCost));
+                            newRow.append($('<td>').text(value.quantity));
+                            itemListBody.append(newRow);
                         }
-                        
-                        
-                    }   
+                    });   
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
@@ -129,14 +117,12 @@
         $("#record-form").on("submit", (e) => {
             // Do not submit the form
             e.preventDefault();
-
             // Get the input fields
             const itemName = $("#item-name").val().trim();
             const itemTag = $("#item-tag").val().trim();
             const itemQuantity = $("#item-quantity").val().trim();
             const itemPrice = $("#item-price").val().trim();
             const action = $("#action").val().trim();
-
             // Send a register request
             Record.record(itemName, itemTag, itemQuantity, itemPrice, action,
                 () => {
@@ -149,8 +135,7 @@
         // init update
         $(function() {
             $("#update-button").click();
-            var form = document.getElementById("record-form");
-            form.style.display = "none";
+            $("#record-form").hide();
 
             const fireSaleData = fetch('/firesale')
                 .then(response => response.json())
@@ -158,22 +143,20 @@
                     if (data['status'] === "error") {
                         $("#countdown").text(data['error']);
                     } else {
-                        console.log(data['start']);
                         const eventDate = new Date(data['data']['start']).getTime();
-                        console.log(eventDate);
                         const timer = setInterval(function() {
                             const now = new Date().getTime();
                             const distance = eventDate - now;
                             if (distance < 0) {
                                 clearInterval(timer);
-                                document.getElementById("countdown").innerHTML = "Event has started!";
+                                $("#countdown").html("Event has started!");
                                 return;
                             }
                             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                            $("#countdown").html(`${days}d ${hours}h ${minutes}m ${seconds}s`);
                         }, 1000);
                         $("#countdown").text("Firesale data updated successfully.");
                     }
