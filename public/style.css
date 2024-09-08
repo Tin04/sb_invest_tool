@@ -14,6 +14,48 @@ body {
     min-height: 100vh;
 }
 
+#header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    width: 100%;
+}
+
+#header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+#header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+#nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+#nav li {
+    margin-left: 20px;
+}
+
+#nav a {
+    color: white;
+    text-decoration: none;
+}
+
+#nav a:hover {
+    text-decoration: underline;
+}
+
+
 #content {
     display: flex;
     flex-direction: column;
