@@ -140,6 +140,32 @@ app.get('/api/firesale', (req, res) => {
     });
 });
 
+// API route for fetching price history
+app.post('/api/history', async (req, res) => {
+  const { itemName, timeRange } = req.body;
+
+  if (!itemName) {
+    return res.status(400).json({ error: 'Item name is required' });
+  }
+
+  try {
+    const response = await fetch(`https://sky.coflnet.com/api/item/price/${itemName}/history/${timeRange}`);
+    if (!response.ok) {
+      return res.status(response.status).json({ error: response.statusText });
+    }
+
+    const data = await response.json();
+    if (!data) {
+      return res.status(404).json({ error: 'Item not found' });
+    }
+    
+    res.json(data);
+  } catch (error) {
+    console.error('Fetching error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 // Use a web server to listen at port 8000
 app.listen(port, () => {
   console.log("The server has started at http://localhost:8000/");
