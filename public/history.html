@@ -27,6 +27,13 @@
         <form id="history-form">
             <label for="item-name">Item Name:</label>
             <input type="text" id="item-name" name="item-name" required>
+            <label for="time-range">Time Range:</label>
+            <select id="time-range" name="time-range" required>
+                <option value="d">Day</option>
+                <option value="w">Week</option>
+                <option value="m">Month</option>
+                <option value="all">All Time</option>
+            </select>
             <button type="submit">Get History</button>
         </form>
 
