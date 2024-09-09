@@ -23,11 +23,11 @@ let apiKey = 'fdbb7790-7e8d-4faf-b503-ab23d98b2f41';
 
 // homepage show item list
 app.get('/', (req, res) => {
-  res.redirect('/update');
+  res.redirect('/api/update');
 });
 
 // update the newest price for invested items
-app.get('/update', async (req, res) => {
+app.get('/api/update', async (req, res) => {
   const items = JSON.parse(fs.readFileSync("./data/holding.json"));
   // Get the first key from the object
   const itemKeys = Object.keys(items);
@@ -68,7 +68,7 @@ app.get('/update', async (req, res) => {
 });
 
 // update your investment holdings reocrd
-app.post('/record', (req, res) => {
+app.post('/api/record', (req, res) => {
   const { itemName, itemTag, itemQuantity, itemPrice, action} = req.body;
   const items = JSON.parse(fs.readFileSync("./data/holding.json"));
 
@@ -123,7 +123,7 @@ app.post('/record', (req, res) => {
   res.json({ status: "success"});
 });
 
-app.get('/firesale', (req, res) => {
+app.get('/api/firesale', (req, res) => {
   const apiUrl = 'https://api.hypixel.net/v2/skyblock/firesales';
 
   fetch(apiUrl)
