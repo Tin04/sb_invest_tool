@@ -4,7 +4,7 @@ const Record = (function() {
     const record = function(itemName, itemTag, itemQuantity, itemPrice, action, onSuccess, onError) {
         const data = JSON.stringify({itemName, itemTag, itemQuantity, itemPrice, action});
 
-        fetch("/record", {
+        fetch("/api/record", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

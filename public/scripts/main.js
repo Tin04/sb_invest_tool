@@ -4,7 +4,7 @@ let itemList = [];
 
 // click -> call backend -> get data from json -> call 3rd party api
 updateButton.on('click', () => {
-    fetch('/update')
+    fetch('/api/update')
         .then(response => response.json())
         .then(data => {
             // Update the table with the new data
@@ -61,7 +61,7 @@ $(function() {
     $("#update-button").click();
     $("#record-form").hide();
 
-    const fireSaleData = fetch('/firesale')
+    const fireSaleData = fetch('/api/firesale')
         .then(response => response.json())
         .then(data => {
             if (data['status'] === "error") {
