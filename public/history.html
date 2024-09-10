@@ -6,7 +6,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <link href="style.css" rel="stylesheet">
     <title>Price History</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 </head>
 <body>
     <div id="header">
@@ -21,7 +21,10 @@
             </nav>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.30.0/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+      
     <main>
         <h2>Price History</h2>
         <form id="history-form">
@@ -44,5 +47,6 @@
     </main>
 
     <script src="/scripts/history.js"></script>
+    
 </body>
 </html>
