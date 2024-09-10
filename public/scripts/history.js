@@ -79,6 +79,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         type: 'time',
                         time: {
                             unit: getTimeUnit(timeRange)
+                        },
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Price'
                         }
                     }
                 }
