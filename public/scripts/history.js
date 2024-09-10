@@ -24,10 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            const times = data.map(item => new Date(item.time).getTime());
-            console.log(times);
-            //console.log(data);
-
             drawChart(data, itemName, timeRange);
         } catch (error) {
             console.error('Error:', error);
@@ -86,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     },
                     y: {
-                        beginAtZero: true,
+                        beginAtZero: false,
                         title: {
                             display: true,
                             text: 'Price'

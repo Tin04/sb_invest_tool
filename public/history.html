@@ -25,26 +25,26 @@
     <script src="https://cdn.jsdelivr.net/npm/date-fns@2.30.0/index.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
       
-    <main>
-        <h2>Price History</h2>
-        <form id="history-form">
-            <label for="item-name">Item Tag:</label>
-            <input type="text" id="item-name" name="item-name" required>
-            <label for="time-range">Time Range:</label>
-            <select id="time-range" name="time-range" required>
-                <option value="day">Day</option>
-                <option value="week">Week</option>
-                <option value="month">Month</option>
-                <option value="full">All Time</option>
-            </select>
-            <button type="submit">Get History</button>
-        </form>
-
+    <div id="app-container">
+        <div>
+            <h2>Price History</h2>
+            <form id="history-form">
+                <label for="item-name">Item Tag:</label>
+                <input type="text" id="item-name" name="item-name" required>
+                <label for="time-range">Time Range:</label>
+                <select id="time-range" name="time-range" required>
+                    <option value="day">Day</option>
+                    <option value="week">Week</option>
+                    <option value="month">Month</option>
+                    <option value="full">All Time</option>
+                </select>
+                <button type="submit">Get History</button>
+            </form>
+        </div>
         <div id="chart-container">
-
             <canvas id="price-chart"></canvas>
         </div>
-    </main>
+    </div>
 
     <script src="/scripts/history.js"></script>
     
