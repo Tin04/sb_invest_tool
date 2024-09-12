@@ -1,12 +1,12 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('history-form');
-    const chartContainer = document.getElementById('chart-container');
+$(function() {
+    const form = $('#history-form');
+    const chartContainer = $('#chart-container');
     let priceChart = null;
 
-    form.addEventListener('submit', async (e) => {
+    form.on('submit', async (e) => {
         e.preventDefault();
-        const itemName = document.getElementById('item-name').value;
-        const timeRange = document.getElementById('time-range').value;
+        const itemName = $('#item-name').val();
+        const timeRange = $('#time-range').val();
 
         try {
             const response = await fetch('/api/history', {
@@ -29,13 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
             displayAnalysis(data);  // Add this line
         } catch (error) {
             console.error('Error:', error);
-            chartContainer.innerHTML = '<p>Error fetching data. Please try again.</p>';
+            chartContainer.html('<p>Error fetching data. Please try again.</p>');
         }
     });
 
     function drawChart(data, itemName, timeRange) {
-        const ctx = document.getElementById('price-chart').getContext('2d');
-
+        const ctx = $('#price-chart').get(0).getContext('2d');
 
         // Calculate moving average (5-day window)
         const movingAverageWindow = 5;
@@ -208,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function displayAnalysis(data) {
-        const analysisContainer = document.getElementById('analysis-container');
+        const analysisContainer = $('#analysis-container');
         const stats = calculateStatistics(data);
         
         const content = `
@@ -222,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <p><strong>Price Volatility:</strong> ${calculateVolatility(data).toFixed(2)}%</p>
         `;
         
-        analysisContainer.innerHTML = content;
+        analysisContainer.html(content);
     }
     
     function calculateVolatility(data) {
