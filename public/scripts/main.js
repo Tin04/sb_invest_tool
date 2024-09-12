@@ -61,21 +61,26 @@ $(function() {
     $("#update-button").click();
     $("#record-form").hide();
 
+    // just get the time, no need know the exact item
     const fireSaleData = fetch('/api/firesale')
         .then(response => response.json())
         .then(data => {
             if (data['status'] === "error") {
                 $("#countdown").text(data['error']);
             } else {
-                const eventDate = new Date(data['data']['start']).getTime();
-                const timer = setInterval(function() {
-                    const now = new Date().getTime();
-                    const distance = eventDate - now;
-                    if (distance < 0) {
-                        clearInterval(timer);
-                        $("#countdown").html("Event has started!");
-                        return;
-                    }
+                if (!('data' in data)) {
+                    $("#countdown").text("No scheduled firesale");
+                } else {
+                    console.log(1);
+                    const eventDate = new Date(data['data']['start']).getTime();
+                    const timer = setInterval(function() {
+                        const now = new Date().getTime();
+                        const distance = eventDate - now;
+                        if (distance < 0) {
+                            clearInterval(timer);
+                            $("#countdown").html("Event has started!");
+                            return;
+                        }
                     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -83,6 +88,8 @@ $(function() {
                     $("#countdown").html(`${days}d ${hours}h ${minutes}m ${seconds}s`);
                 }, 1000);
                 $("#countdown").text("Firesale data updated successfully.");
+                }
+                
             }
         })
         .catch(error => {
