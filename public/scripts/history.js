@@ -61,7 +61,8 @@ $(function() {
                         borderColor: 'rgb(75, 192, 192)',
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         tension: 0.1,
-                        fill: false
+                        fill: false,
+                        yAxisID: 'y'
                     },
                     {
                         label: `ma5`,
@@ -69,7 +70,8 @@ $(function() {
                         borderColor: 'rgb(255, 99, 132)',
                         borderWidth: 2,
                         fill: false,
-                        pointRadius: 0
+                        pointRadius: 0,
+                        yAxisID: 'y'
                     },
                     {
                         label: `ma10`,
@@ -77,7 +79,8 @@ $(function() {
                         borderColor: 'rgb(54, 162, 235)', 
                         borderWidth: 2,
                         fill: false,
-                        pointRadius: 0
+                        pointRadius: 0,
+                        yAxisID: 'y'
                     },
                     {
                         label: `ma30`,
@@ -85,7 +88,15 @@ $(function() {
                         borderColor: 'rgb(153, 102, 255)', 
                         borderWidth: 2,
                         fill: false,
-                        pointRadius: 0
+                        pointRadius: 0,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Volume',
+                        data: data.map(item => ({x: new Date(item.time).getTime(), y: item.volume})),
+                        type: 'bar',
+                        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+                        yAxisID: 'y1'
                     }
                 ]
             },
@@ -122,10 +133,26 @@ $(function() {
                     },
                     y: {
                         beginAtZero: false,
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
                         title: {
                             display: true,
                             text: 'Price'
                         }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        grid: {
+                            drawOnChartArea: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Volume'
+                        },
+                        min: 0
                     }
                 }
             }
