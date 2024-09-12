@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // https://developer.hypixel.net/dashboard
-let apiKey = 'fdbb7790-7e8d-4faf-b503-ab23d98b2f41';
+let apiKey = 'dfd73605-38c7-4280-812e-162129f94311';
 
 //const apiUrl = `https://api.hypixel.net/skyblock/auctions?key=${apiKey}&item=${itemToTrack}`;
 
