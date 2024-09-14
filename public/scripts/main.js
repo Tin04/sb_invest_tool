@@ -7,8 +7,10 @@ updateButton.on('click', () => {
     fetch('/api/update')
         .then(response => response.json())
         .then(data => {
+            $("#total-cost-value").text(data['totalCost'].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            $("#total-worth-value").text(data['totalWorth'].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
             // Update the table with the new data
-            $.each(data, function(key, value) {
+            $.each(data['items'], function(key, value) {
                 console.log(itemList);
                 // if itemList contains key
                 if (itemList.includes(key)) {

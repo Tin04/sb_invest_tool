@@ -30,6 +30,8 @@ app.get('/', (req, res) => {
 app.get('/api/update', async (req, res) => {
   const items = JSON.parse(fs.readFileSync("./data/holding.json"));
   // Get the first key from the object
+  let totalCost = 0;
+  let totalWorth = 0;
   const itemKeys = Object.keys(items);
   // let itemTag;
   // let apiUrl;  // will this better as no create and delete obj?
@@ -41,11 +43,14 @@ app.get('/api/update', async (req, res) => {
     const itemTag = items[key]['itemTag'];
     const apiUrl = `https://sky.coflnet.com/api/item/price/${itemTag}/bin`;
 
+    totalCost += items[key]['quantity'] * items[key]['avgCost'];
+
     return fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
         items[key]['price'] = data['lowest'];
         //console.log(items[key]['price']);
+        totalWorth += items[key]['quantity'] * data['lowest'];
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -60,7 +65,12 @@ app.get('/api/update', async (req, res) => {
     fs.writeFileSync("./data/holding.json", JSON.stringify(items, null, " "));
 
     // Send the updated items in the response
-    res.json(items);
+    const result = {
+      totalCost: totalCost,
+      totalWorth: totalWorth,
+      items: items
+    };
+    res.json(result);
   } catch (error) {
     console.error('Error updating prices:', error);
     res.status(500).send('Error updating prices');
