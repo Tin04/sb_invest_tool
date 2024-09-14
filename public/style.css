@@ -121,6 +121,11 @@ body {
     }
 }
 
+#dropdown-form {
+    margin: 20px;
+    width: 100%;
+    max-width: 300px;
+}
 
 #toggle-bar {
     width: 100%;
