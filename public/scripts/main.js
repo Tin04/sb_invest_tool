@@ -65,6 +65,8 @@ $("#record-form").on("submit", (e) => {
         },
         (error) => { $("#record-message").text(error); }
     );
+    // update list
+    $("#update-button").click();
 });
 // init update
 $(function() {
