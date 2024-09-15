@@ -1,23 +1,268 @@
 {
- "hyperion": {
-  "itemTag": "HYPERION",
-  "quantity": 1,
-  "avgCost": 0,
-  "price": 959000000,
-  "profit": 0
- },
- "apple": {
-  "itemTag": "APPLE",
-  "quantity": 3,
-  "price": 5,
-  "avgCost": 1,
-  "profit": 0
- },
  "black lion skin": {
-  "itemTag": "SKIN_LION_BLACK_PET",
-  "quantity": 1,
+  "itemTag": "PET_SKIN_LION_BLACK",
+  "quantity": 2,
   "avgCost": 85000000,
   "profit": 0,
-  "price": 68000000
+  "price": 61000000
+ },
+ "white lion skin": {
+  "itemTag": "PET_SKIN_LION_WHITE",
+  "quantity": 1,
+  "avgCost": 55000000,
+  "profit": 0,
+  "price": 73499999
+ },
+ "grand freezing rune": {
+  "itemTag": "RUNE_GRAND_FREEZING",
+  "quantity": 2,
+  "price": 268000000,
+  "avgCost": 74000000,
+  "profit": 0
+ },
+ "baby edrag skin": {
+  "itemTag": "PET_SKIN_ENDER_DRAGON_BABY",
+  "quantity": 2,
+  "price": 116000000,
+  "avgCost": 37000000,
+  "profit": 0
+ },
+ "ancient gdrag skin": {
+  "itemTag": "PET_SKIN_GOLDEN_DRAGON_ANCIENT",
+  "quantity": 1,
+  "price": 325000000,
+  "avgCost": 68000000,
+  "profit": 0
+ },
+ "primal fear rune": {
+  "itemTag": "RUNE_PRIMAL_FEAR",
+  "quantity": 2,
+  "price": 132000000,
+  "avgCost": 52000000,
+  "profit": 0
+ },
+ "baby blue edrag skin": {
+  "itemTag": "PET_SKIN_ENDER_DRAGON_BABY_BLUE",
+  "quantity": 2,
+  "price": 213000000,
+  "avgCost": 53000000,
+  "profit": 0
+ },
+ "blue moon enderman skin": {
+  "itemTag": "PET_SKIN_ENDERMAN_BLUE_MOON",
+  "quantity": 1,
+  "price": 118500000,
+  "avgCost": 48000000,
+  "profit": 0
+ },
+ "bark tunes rune": {
+  "itemTag": "RUNE_BARK_TUNES",
+  "quantity": 1,
+  "price": 350000000,
+  "avgCost": 69400000,
+  "profit": 0
+ },
+ "golden carpet rune": {
+  "itemTag": "RUNE_GOLDEN_CARPET",
+  "quantity": 2,
+  "price": 97520000,
+  "avgCost": 44500000,
+  "profit": 0
+ },
+ "spellbound rune": {
+  "itemTag": "RUNE_SPELLBOUND",
+  "quantity": 2,
+  "price": 178000000,
+  "avgCost": 75000000,
+  "profit": 0
+ },
+ "ice skates rune": {
+  "itemTag": "RUNE_ICE_SKATES",
+  "quantity": 2,
+  "avgCost": 47000000,
+  "profit": 0,
+  "price": 97000000
+ },
+ "enchant rune": {
+  "itemTag": "RUNE_ENCHANT",
+  "quantity": 1,
+  "price": 8500000,
+  "avgCost": 34000000,
+  "profit": 0
+ },
+ "doge wolf skin": {
+  "itemTag": "PET_SKIN_WOLF_DOGE",
+  "quantity": 2,
+  "price": 115000000,
+  "avgCost": 49000000,
+  "profit": 0
+ },
+ "magic cube power orb skin": {
+  "itemTag": "MAGIC_CUBE_FLUX",
+  "quantity": 2,
+  "price": 155000000,
+  "avgCost": 87500000,
+  "profit": 0
+ },
+ "sly fox skin": {
+  "itemTag": "SHADOW_ASSASSIN_SLY_FOX",
+  "quantity": 1,
+  "price": 54000000,
+  "avgCost": 38000000,
+  "profit": 0
+ },
+ "golden turtle egg orb skin": {
+  "itemTag": "GOLDEN_ANCIENT_EGG_FLUX",
+  "quantity": 1,
+  "avgCost": 45000000,
+  "profit": 0,
+  "price": 55000000
+ },
+ "panda spirit skin": {
+  "itemTag": "PANDA_SPIRIT",
+  "quantity": 3,
+  "price": 169900000,
+  "avgCost": 156500000,
+  "profit": 0
+ },
+ "husky wolf skin": {
+  "itemTag": "PET_SKIN_WOLF_HUSKY",
+  "quantity": 2,
+  "price": 95000000,
+  "avgCost": 107000000,
+  "profit": 0
+ },
+ "rainy day rune": {
+  "itemTag": "RUNE_RAINY_DAY",
+  "quantity": 2,
+  "price": 52000000,
+  "avgCost": 52000000,
+  "profit": 0
+ },
+ "beach ball orb skin": {
+  "itemTag": "BEACH_BALL_FLUX",
+  "quantity": 2,
+  "price": 68750000,
+  "avgCost": 63000000,
+  "profit": 0
+ },
+ "frost knight skin": {
+  "itemTag": "FROZEN_BLAZE_FROST_KNIGHT",
+  "quantity": 2,
+  "price": 64998999,
+  "avgCost": 83000000,
+  "profit": 0
+ },
+ "chromari skin": {
+  "itemTag": "PET_SKIN_SQUID_CHROMARI",
+  "quantity": 2,
+  "price": 55000000,
+  "avgCost": 70500000,
+  "profit": 0
+ },
+ "midnight dolphin skin": {
+  "itemTag": "PET_SKIN_DOLPHIN_MIDNIGHT",
+  "quantity": 1,
+  "avgCost": 71000000,
+  "profit": 0,
+  "price": 49000000
+ },
+ "portal dye": {
+  "itemTag": "DYE_PORTAL",
+  "quantity": 4,
+  "price": 57999999,
+  "avgCost": 98000000,
+  "profit": 0
+ },
+ "ender knight skin": {
+  "itemTag": "FINAL_DESTINATION_ENDER_KNIGHT",
+  "quantity": 2,
+  "price": 64998999,
+  "avgCost": 67500000,
+  "profit": 0
+ },
+ "great shark magma lord skin": {
+  "itemTag": "GREAT_SHARK_MAGMA_LORD",
+  "quantity": 1,
+  "price": 114800000,
+  "avgCost": 155000000,
+  "profit": 0
+ },
+ "snubfin dolphin skin": {
+  "itemTag": "PET_SKIN_DOLPHIN_SNUBFIN",
+  "quantity": 1,
+  "price": 89999999,
+  "avgCost": 76000000,
+  "profit": 0
+ },
+ "astronaut monkey skin": {
+  "itemTag": "PET_SKIN_MONKEY_ASTRONAUT",
+  "quantity": 1,
+  "price": 218999999,
+  "avgCost": 209000000,
+  "profit": 0
+ },
+ "choco magma cube skin": {
+  "itemTag": "PET_SKIN_MAGMA_CUBE_CHOCO_CUBE",
+  "quantity": 1,
+  "avgCost": 125000000,
+  "profit": 0,
+  "price": 149000000
+ },
+ "smoldering ember skin": {
+  "itemTag": "REKINDLED_EMBER_BURNING",
+  "quantity": 1,
+  "price": 65000000,
+  "avgCost": 53000000,
+  "profit": 0
+ },
+ "doge plushie wolf skin": {
+  "itemTag": "PET_SKIN_WOLF_DOGE_PLUSHIE",
+  "quantity": 1,
+  "price": 39500000,
+  "avgCost": 25000000,
+  "profit": 0
+ },
+ "pastel sky dye": {
+  "itemTag": "DYE_PASTEL_SKY",
+  "quantity": 3,
+  "price": 64999999,
+  "avgCost": 69333333,
+  "profit": 0
+ },
+ "harlequin flying fish skin": {
+  "itemTag": "PET_SKIN_FLYING_FISH_HARLEQUIN",
+  "quantity": 1,
+  "price": 64999998,
+  "avgCost": 67000000,
+  "profit": 0
+ },
+ "sandstorm cat skin": {
+  "itemTag": "BERSERKER_SANDSTORM_CAT",
+  "quantity": 2,
+  "price": 40000000,
+  "avgCost": 40000000,
+  "profit": 0
+ },
+ "lucky dye": {
+  "itemTag": "DYE_LUCKY",
+  "quantity": 2,
+  "price": 70000000,
+  "avgCost": 72500000,
+  "profit": 0
+ },
+ "cavern glacite golem skin": {
+  "itemTag": "PET_SKIN_GLACITE_GOLEM_CAVERN",
+  "quantity": 1,
+  "price": 113900000,
+  "avgCost": 114000000,
+  "profit": 0
+ },
+ "rose dye": {
+  "itemTag": "DYE_ROSE",
+  "quantity": 1,
+  "price": 67500000,
+  "avgCost": 71700000,
+  "profit": 0
  }
 }
