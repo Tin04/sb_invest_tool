@@ -49,7 +49,6 @@ app.get('/api/update', async (req, res) => {
       .then(response => response.json())
       .then(data => {
         items[key]['price'] = data['lowest'];
-        //console.log(items[key]['price']);
         totalWorth += items[key]['quantity'] * data['lowest'];
       })
       .catch(error => {
