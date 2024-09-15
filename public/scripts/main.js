@@ -32,6 +32,14 @@ updateButton.on('click', () => {
                     newRow.append($('<td>').text(value.quantity));
                     itemListBody.append(newRow);
                 }
+                // change bg color depend on profit/loss
+                const index = itemList.indexOf(key);
+                const row = itemListBody.find('tr').eq(index);
+                if (value.price > value.avgCost) {
+                    row.addClass('highlight-green');
+                } else if (value.price < value.avgCost) {
+                    row.addClass('highlight-red');
+                }
             });   
     })
     .catch(error => {
