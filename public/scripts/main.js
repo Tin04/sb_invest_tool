@@ -36,10 +36,19 @@ updateButton.on('click', () => {
                 const index = itemList.indexOf(key);
                 const row = itemListBody.find('tr').eq(index);
                 if (value.price > value.avgCost) {
+                    // remove class red/white
+                    row.removeClass('highlight-red');
+                    row.removeClass('highlight-white');
                     row.addClass('highlight-green');
                 } else if (value.price < value.avgCost) {
+                    // remove class green/white
+                    row.removeClass('highlight-green');
+                    row.removeClass('highlight-white');
                     row.addClass('highlight-red');
                 } else {
+                    // remove class green/red
+                    row.removeClass('highlight-green');
+                    row.removeClass('highlight-red');
                     row.addClass('highlight-white');
                 }
             });   
