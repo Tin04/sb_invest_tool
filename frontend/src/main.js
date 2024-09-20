@@ -4,7 +4,7 @@ let itemList = [];
 
 // click -> call backend -> get data from json -> call 3rd party api
 updateButton.on('click', () => {
-    fetch('/api/update')
+    fetch(`${BACKEND_HOST}/api/update`)
         .then(response => response.json())
         .then(data => {
             $("#total-cost-value").text(data['totalCost'].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
@@ -86,7 +86,7 @@ $(function() {
     $("#record-form").hide();
 
     // just get the time, no need know the exact item
-    const fireSaleData = fetch('/api/firesale')
+    const fireSaleData = fetch(`${BACKEND_HOST}/api/firesale`)
         .then(response => response.json())
         .then(data => {
             if (data['status'] === "error") {
