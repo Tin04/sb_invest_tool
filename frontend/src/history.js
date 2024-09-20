@@ -9,7 +9,7 @@ $(function() {
         const timeRange = $('#time-range').val();
 
         try {
-            const response = await fetch('/api/history', {
+            const response = await fetch(`${BACKEND_HOST}/api/history`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -1,16 +1,25 @@
 // backend for the tool
 const express = require('express');
 const fs = require('fs');
+const cors = require('cors');
 
 const app = express();
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-const port = 8000;
+const port = process.env.PORT || 5000;
 
+app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+
+const host = 'http://localhost:5173';
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', host);
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 
 // https://developer.hypixel.net/dashboard
 let apiKey = 'dfd73605-38c7-4280-812e-162129f94311';
@@ -177,5 +186,5 @@ app.post('/api/history', async (req, res) => {
 
 // Use a web server to listen at port 8000
 app.listen(port, () => {
-  console.log("The server has started at http://localhost:8000/");
+  console.log(`The server has started at http://localhost:${port}/`);
 });
