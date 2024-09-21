@@ -18,8 +18,16 @@ function Home() {
   const [totalWorth, setTotalWorth] = useState('');
 
   useEffect(() => {
-    fetchItems();
-  }, []);
+    const fetchData = async () => {
+        try {
+          // ensure init data fetched before rendering
+            await fetchItems();
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+    fetchData();
+}, []);
 
   const fetchItems = () => {
     fetch(import.meta.env.VITE_BACKEND_HOST + "/api/update")
