@@ -5,6 +5,7 @@
     --text-color: #333333;
     --header-bg: #f0f0f0;
     --link-color: #0066cc;
+    --header-height: 60px;
 }
   
 [data-theme="dark"] {
@@ -12,6 +13,7 @@
     --text-color: #ffffff;
     --header-bg: #222222;
     --link-color: #66b3ff;
+    --header-height: 60px;
 }
 
 
@@ -19,13 +21,13 @@
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-body {
+#app-body {
     font-family: Arial, sans-serif;
     /* background-color: #f4f4f4; */
     background-color: var(--bg-color);
     color: var(--text-color);
     margin: 0;
-    padding: 0;
+    padding-top: var(--header-height);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -34,11 +36,19 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+
+
 #header {
+    font-family: Arial, sans-serif;
     background-color: var(--header-bg);
-    /* color: white; */
+    height: var(--header-height);
     padding: 10px 0;
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 #header-content {
@@ -53,7 +63,7 @@ body {
 #header a {
     margin: 0;
     font-size: 24px;
-    /* color: white; */
+    color: var(--text-color);
     text-decoration: none;
 }
 
@@ -72,12 +82,14 @@ body {
 
 #nav a {
     font-size: 16px;
-    /* color: white; */
+    color: var(--text-color);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 #nav a:hover {
-    text-decoration: underline;
+    color: var(--hover-color);
+    text-decoration: none;
 }
 
 a {
@@ -113,6 +125,7 @@ a {
     align-items: center;
     margin-bottom: 10px;
     width: 100%;
+    white-space: nowrap;
 }
 
 #item-list-title {
@@ -136,7 +149,7 @@ a {
     margin-right: 20px;
     padding: 0;
     flex-grow: 1;
-    white-space: nowrap;
+    
 }
 
 #update-button {
@@ -215,8 +228,6 @@ a {
     background-color: #f9f9f9;
     border-radius: 0 0 5px 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    max-height: 0;
     transition: max-height 0.3s ease;
 }
 
