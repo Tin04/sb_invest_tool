@@ -21,12 +21,16 @@
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
 #app-body {
     font-family: Arial, sans-serif;
     /* background-color: #f4f4f4; */
     background-color: var(--bg-color);
     color: var(--text-color);
-    margin: 0;
     padding-top: var(--header-height);
     display: flex;
     flex-direction: column;
@@ -133,6 +137,10 @@
     display: flex;
     align-items: center;
     margin-right: 20px;
+}
+
+#item-list {
+    border-radius: 5px;
 }
 
 #item-list tr {
