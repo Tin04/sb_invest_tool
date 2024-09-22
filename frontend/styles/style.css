@@ -85,16 +85,16 @@
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
 
 #nav a:hover {
-    color: var(--hover-color);
-    text-decoration: none;
+    text-decoration: underline;
 }
 
-a {
+/* a {
     color: var(--link-color);
-}
+} */
 
 #theme-toggle {
     white-space: nowrap;
