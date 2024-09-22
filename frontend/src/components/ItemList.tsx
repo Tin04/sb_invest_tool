@@ -16,7 +16,7 @@ const ItemList = React.memo(({ items }: { items: Record<string, Item>[] }) => {
     return <div>No items to display.</div>;
   }
   return (
-      <table>
+      <table id="item-list">
         <thead>
         <tr>
             <th>Name</th>
