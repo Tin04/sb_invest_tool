@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 const Header: React.FC = () => {
   useEffect(() => {
@@ -16,7 +17,7 @@ const Header: React.FC = () => {
             <li><Link to="/history">Price History</Link></li>
             <li><Link to="/links">Links</Link></li>
             <li><Link to="#about">About</Link></li>
-            <li><button id="theme-toggle">Light Mode</button></li>
+            <li><ThemeToggle /></li>
           </ul>
         </nav>
       </div>
