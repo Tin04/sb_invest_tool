@@ -97,6 +97,7 @@
 } */
 
 #theme-toggle {
+    margin: 0;
     white-space: nowrap;
     background-color: var(--text-color);
     color: var(--bg-color);
