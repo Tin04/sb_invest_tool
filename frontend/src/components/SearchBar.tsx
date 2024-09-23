@@ -18,7 +18,7 @@ interface SearchBarProps {
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSelect, name, value, onChange }) => {
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  // const [searchTerm, setSearchTerm] = useState<string>('');
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [activeSuggestion, setActiveSuggestion] = useState<number>(-1);
@@ -59,7 +59,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSelect, name, value, onChange }
   };
 
   const handleSuggestionClick = (suggestion: Suggestion) => {
-    setSearchTerm(suggestion.name);
+    // setSearchTerm(suggestion.name);
     setSuggestions([]);
     onSelect(suggestion);
     // You can add additional action here, like redirecting to item page
@@ -129,3 +129,36 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSelect, name, value, onChange }
 };
 
 export default SearchBar;
+
+/*
+How to integrate search bar
+
+--- Functions ---
+  const handleItemSelect = (item: Suggestion) => {
+    setFormData(prevData => ({
+      ...prevData,
+      itemName: item.name,
+      itemTag: item.id,
+      // You can also set other fields based on the selected item if needed
+      // For example: itemTag: item.type,
+    }));
+    setSearchValue(item.name);
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchValue(value);
+    setFormData(prevData => ({
+      ...prevData,
+      itemName: value,
+    }));
+  };
+
+--- Render UI ---
+  <SearchBar
+    name="item"
+    value={searchTerm}
+    onChange={setSearchTerm}
+    onSelect={handleSelect}
+  />
+
+*/
