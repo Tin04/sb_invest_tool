@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Chart, registerables } from 'chart.js';
 import 'chartjs-adapter-date-fns';
 import { getTimeRangeText, getTimeUnit, calculateMovingAverage, calculateStatistics, calculateVolatility } from '../utils/historyHelpers.tsx';
+import SearchBar from '../components/SearchBar.tsx';
 import '/styles/style.css';
 
 Chart.register(...registerables);
@@ -14,8 +15,18 @@ interface HistoryData {
   volume: number;
 }
 
+interface Suggestion {
+  name: string;
+  id: string;
+  type: string;
+  iconUrl: string;
+  img: string;
+  tier: string;
+}
+
 const History: React.FC = () => {
   const [itemName, setItemName] = useState('');
+  const [searchValue, setSearchValue] = useState('');
   const [timeRange, setTimeRange] = useState('day');
   const [chartData, setChartData] = useState<HistoryData[]>([]);
   const [analysisData, setAnalysisData] = useState<any>(null);
@@ -28,6 +39,15 @@ const History: React.FC = () => {
       displayAnalysis(chartData);
     }
   }, [chartData]);
+
+  const handleItemSelect = (item: Suggestion) => {
+    setItemName(item.id);
+    setSearchValue(item.name);
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchValue(value);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -214,13 +234,11 @@ const History: React.FC = () => {
         <h2>Price History</h2>
         <form onSubmit={handleSubmit}>
           <label htmlFor="item-name">Item Tag:</label>
-          <input
-            type="text"
-            id="item-name"
-            name="item-name"
-            value={itemName}
-            onChange={(e) => setItemName(e.target.value)}
-            required
+          <SearchBar
+            onSelect={handleItemSelect}
+            name="itemName"
+            value={searchValue}
+            onChange={handleSearchChange}
           />
           <label htmlFor="time-range">Time Range:</label>
           <select
