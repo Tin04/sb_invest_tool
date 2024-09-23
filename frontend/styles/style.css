@@ -249,6 +249,7 @@ label {
     font-weight: bold;
 }
 
+.search-container,
 input[type="text"],
 input[type="number"],
 select {
