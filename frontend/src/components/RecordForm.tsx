@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
+import SearchBar from './SearchBar';
 
+interface Suggestion {
+  name: string;
+  id: string;
+  type: string;
+  iconUrl: string;
+  img: string;
+  tier: string;
+}
 
 function RecordForm() {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -10,6 +19,7 @@ function RecordForm() {
     itemPrice: 0,
     action: 'buy'
   });
+  const [searchValue, setSearchValue] = useState('');
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -19,6 +29,26 @@ function RecordForm() {
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleItemSelect = (item: Suggestion) => {
+    setFormData(prevData => ({
+      ...prevData,
+      itemName: item.name,
+      itemTag: item.id,
+      // You can also set other fields based on the selected item if needed
+      // For example: itemTag: item.type,
+    }));
+    setSearchValue(item.name);
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchValue(value);
+    setFormData(prevData => ({
+      ...prevData,
+      itemName: value,
+    }));
+  };
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,8 +78,11 @@ function RecordForm() {
             return response.json();
         })
         .then(data => {
-            console.log('Form submitted successfully! Response:', data);
-            window.alert('Form submitted successfully!');
+            if (data.status === "error") {
+              window.alert(data.error);
+            } else {
+              window.alert('Form submitted successfully!');
+            }
             setFormData({
                 itemName: '',
                 itemTag: '',
@@ -57,6 +90,7 @@ function RecordForm() {
                 itemPrice: 0,
                 action: 'buy'
             });
+            setSearchValue('');
         })
         .catch(error => {
             console.error('Error submitting form:', error);
@@ -69,9 +103,12 @@ function RecordForm() {
       {isFormVisible && (
         <form id="record-form" onSubmit={handleSubmit}>
           <label htmlFor="itemName">Item Name:</label>
-          <input type="text" id="itemName" name="itemName" value={formData.itemName} onChange={handleInputChange} /><br /><br />
-          <label htmlFor="itemTag">Item Tag (Metadata):</label>
-          <input type="text" id="itemTag" name="itemTag" value={formData.itemTag} onChange={handleInputChange} /><br /><br />
+          <SearchBar
+            onSelect={handleItemSelect}
+            name="itemName"
+            value={searchValue}
+            onChange={handleSearchChange}
+          />
           <label htmlFor="itemQuantity">Item Quantity:</label>
           <input type="number" id="itemQuantity" name="itemQuantity" value={formData.itemQuantity} onChange={handleInputChange} /><br /><br />
           <label htmlFor="itemPrice">Item Cost (average):</label>
