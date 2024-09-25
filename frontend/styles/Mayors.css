@@ -1,0 +1,78 @@
+.mayors {
+    padding: 20px;
+}
+
+.mayors-title {
+    margin-bottom: 16px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.mayors-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.mayors-column {
+    flex: 1;
+    max-width: 48%;
+}
+
+.column-title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.mayor-card {
+    margin-bottom: 16px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.mayor-card.special {
+    background-color: #ffe0b2;
+}
+
+.mayor-card.regular {
+    background-color: #e3f2fd;
+}
+
+.mayor-name {
+    margin-bottom: 8px;
+}
+
+.mayor-description {
+    margin-bottom: 16px;
+}
+
+.toggle-button {
+    margin-bottom: 8px;
+}
+
+.investment-ideas {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.investment-ideas.expanded {
+    max-height: 1000px; /* This should be larger than your content height */
+    transition: max-height 0.5s ease-in;
+}
+
+.investment-ideas ul {
+    padding-left: 20px;
+    margin: 8px 0 0;
+}
+
+@media (max-width: 768px) {
+    .mayors-columns {
+        flex-direction: column;
+    }
+
+    .mayors-column {
+        max-width: 100%;
+    }
+}
