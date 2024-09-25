@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import History from './pages/History';
 import Links from './pages/Links';
+import Mayors from './pages/Mayors';
 
 const App: React.FC = () => {
   return (
@@ -14,7 +15,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/history" element={<History />} />
           <Route path="/links" element={<Links />} />
-          
+          <Route path="/mayors" element={<Mayors />} />
         </Routes>
       </div>
     </div>
