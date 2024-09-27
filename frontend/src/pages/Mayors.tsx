@@ -14,7 +14,7 @@ const mayors: Mayor[] = [
     name: "Paul",
     description: "Increases dungeon rewards and reduces entry requirements.",
     investmentIdeas: [
-      "Invest in dungeon gear and items",
+      "Invest in dungeon gear and drops: e.g. auto recomb, recomb",
       "Stock up on dungeon consumables",
       "Prepare to sell carry services"
     ],
@@ -24,7 +24,7 @@ const mayors: Mayor[] = [
     name: "Aatrox",
     description: "Boosts Slayer XP and reduces Slayer quest costs.",
     investmentIdeas: [
-      "Stock up on Slayer-related items",
+      "Stock up on Slayer-related items/drops: e.g. scythe blade, judgement core",
       "Prepare to sell Slayer carry services",
       "Invest in combat gear for Slayer quests"
     ],
@@ -34,9 +34,8 @@ const mayors: Mayor[] = [
     name: "Diana",
     description: "Introduces mythological creatures and excavation events.",
     investmentIdeas: [
-      "Invest in Griffin Pet and related items",
-      "Stock up on excavation tools",
-      "Prepare to sell rare drops from mythological creatures"
+      "Invest in drops: e.g. griffin feather, chimera",
+      "Stock up on excavation tools"
     ],
     type: "regular"
   },
