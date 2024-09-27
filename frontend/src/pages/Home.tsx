@@ -53,7 +53,7 @@ function Home() {
   return (
     <div id="content">
       <Timer />
-      <RecordForm />
+      <RecordForm fetchData={fetchItems} />
       <div id="item-list-header">
         <div id="item-list-title">
           <h2 id="list-title">Item List</h2>

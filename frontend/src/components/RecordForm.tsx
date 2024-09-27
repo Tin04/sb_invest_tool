@@ -10,7 +10,11 @@ interface Suggestion {
   tier: string;
 }
 
-function RecordForm() {
+interface RecordFormProps {
+  fetchData: () => void;
+}
+
+function RecordForm({ fetchData }: RecordFormProps) {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [formData, setFormData] = useState({
     itemName: '',
@@ -82,6 +86,7 @@ function RecordForm() {
               window.alert(data.error);
             } else {
               window.alert('Form submitted successfully!');
+              fetchData();
             }
             setFormData({
                 itemName: '',
