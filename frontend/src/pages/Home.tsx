@@ -50,6 +50,20 @@ function Home() {
     await fetchItems();
   };
 
+  const fetchData = () => {
+    fetch(import.meta.env.VITE_BACKEND_HOST + "/api/data")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+  };
+  const handleUpdateData = async () => {
+    await fetchData();
+  };
+
   return (
     <div id="content">
       <Timer />
@@ -58,6 +72,7 @@ function Home() {
         <div id="item-list-title">
           <h2 id="list-title">Item List</h2>
           <button id="update-button" onClick={handleUpdatePrices}>Update List</button>
+          <button id="udpate-data" onClick={handleUpdateData}>Update Data</button>
         </div>
         <div id="total-values">
           <div id="total-cost">Invested total: <span id="total-cost-value">{totalCost}</span></div>

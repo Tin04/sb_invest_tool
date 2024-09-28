@@ -83,6 +83,45 @@ app.get('/api/update', async (req, res) => {
   }
 });
 
+// update the item data in the backend
+app.get('/api/data', async (req, res) => {
+  const items = JSON.parse(fs.readFileSync("./data/holding.json"));
+  const itemKeys = Object.keys(items);
+
+  // Array to store all fetch promises
+  const fetchPromises = itemKeys.map(key => {
+    const apiUrl = `https://sky.coflnet.com/api/item/search/${key}`;
+
+    return fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.length > 0) {
+          items[key]['itemName'] = data[0]['name'];
+        } else {
+          console.error(`Error: No data found for itemTag ${key}`);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  });
+
+  try {
+    // Wait for all fetch promises to resolve
+    await Promise.all(fetchPromises);
+
+    // Save the updated data to the JSON file
+    fs.writeFileSync("./data/holding.json", JSON.stringify(items, null, " "));
+
+    // Send the updated items in the response
+    res.json(items);
+
+  } catch (error) {
+    console.error('Error updating prices:', error);
+    res.status(500).send('Error updating prices');
+  }
+});
+
 // update your investment holdings reocrd
 app.post('/api/record', (req, res) => {
   const { itemName, itemTag, itemQuantity, itemPrice, action } = req.body;
