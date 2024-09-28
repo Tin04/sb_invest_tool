@@ -58,7 +58,7 @@ function RecordForm({ fetchData }: RecordFormProps) {
     e.preventDefault();
     if (
       formData.itemName === "" ||
-      // formData.itemTag === "" ||  // check this in backend
+      formData.itemTag === "" ||  // check this in backend
 
       formData.itemQuantity === 0 ||
       formData.itemPrice === 0

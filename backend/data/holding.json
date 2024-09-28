@@ -1,268 +1,303 @@
 {
- "black lion skin": {
-  "itemTag": "PET_SKIN_LION_BLACK",
-  "quantity": 2,
+ "PET_SKIN_LION_BLACK": {
+  "itemName": "Black Lion Skin",
+  "quantity": 1,
   "avgCost": 85000000,
   "profit": 0,
-  "price": 60000000
+  "price": 58000000
  },
- "white lion skin": {
-  "itemTag": "PET_SKIN_LION_WHITE",
+ "PET_SKIN_LION_WHITE": {
+  "itemName": "White Lion Skin",
   "quantity": 1,
   "avgCost": 55000000,
   "profit": 0,
-  "price": 64000000
+  "price": 52699999
  },
- "grand freezing rune": {
-  "itemTag": "RUNE_GRAND_FREEZING",
+ "RUNE_GRAND_FREEZING": {
+  "itemName": "◆ Grand Freezing Rune",
   "quantity": 2,
-  "price": 265000000,
   "avgCost": 74000000,
-  "profit": 0
+  "profit": 0,
+  "price": 247000000
  },
- "baby edrag skin": {
-  "itemTag": "PET_SKIN_ENDER_DRAGON_BABY",
+ "PET_SKIN_ENDER_DRAGON_BABY": {
+  "itemName": "Baby Ender Dragon Skin",
   "quantity": 2,
-  "price": 109000000,
   "avgCost": 37000000,
-  "profit": 0
+  "profit": 0,
+  "price": 114999999
  },
- "ancient gdrag skin": {
-  "itemTag": "PET_SKIN_GOLDEN_DRAGON_ANCIENT",
+ "PET_SKIN_GOLDEN_DRAGON_ANCIENT": {
+  "itemName": "Ancient Golden Dragon Skin",
   "quantity": 1,
-  "price": 307000000,
   "avgCost": 68000000,
-  "profit": 0
+  "profit": 0,
+  "price": 296900000
  },
- "primal fear rune": {
-  "itemTag": "RUNE_PRIMAL_FEAR",
+ "RUNE_PRIMAL_FEAR": {
+  "itemName": "Primal Fear Rune",
   "quantity": 2,
-  "price": 122000000,
   "avgCost": 52000000,
-  "profit": 0
+  "profit": 0,
+  "price": 114000000
  },
- "baby blue edrag skin": {
-  "itemTag": "PET_SKIN_ENDER_DRAGON_BABY_BLUE",
+ "PET_SKIN_ENDER_DRAGON_BABY_BLUE": {
+  "itemName": "Baby Blue Ender Dragon Skin",
   "quantity": 2,
-  "price": 189000000,
   "avgCost": 53000000,
-  "profit": 0
+  "profit": 0,
+  "price": 205000000
  },
- "blue moon enderman skin": {
-  "itemTag": "PET_SKIN_ENDERMAN_BLUE_MOON",
+ "PET_SKIN_ENDERMAN_BLUE_MOON": {
+  "itemName": "Blue Moon Enderman Skin",
   "quantity": 1,
-  "price": 111111111,
   "avgCost": 48000000,
-  "profit": 0
+  "profit": 0,
+  "price": 139000000
  },
- "bark tunes rune": {
-  "itemTag": "RUNE_BARK_TUNES",
+ "UNIQUE_RUNE_BARK_TUNES": {
+  "itemName": "Bark Tunes Rune",
   "quantity": 1,
-  "price": 288000000,
   "avgCost": 69400000,
-  "profit": 0
+  "profit": 0,
+  "price": 270000000
  },
- "golden carpet rune": {
-  "itemTag": "RUNE_GOLDEN_CARPET",
+ "RUNE_GOLDEN_CARPET": {
+  "itemName": "Golden Carpet Rune",
   "quantity": 2,
-  "price": 99999999,
   "avgCost": 44500000,
-  "profit": 0
+  "profit": 0,
+  "price": 116000000
  },
- "spellbound rune": {
-  "itemTag": "RUNE_SPELLBOUND",
+ "RUNE_SPELLBOUND": {
+  "itemName": "Spellbound Rune",
   "quantity": 2,
-  "price": 188000000,
   "avgCost": 75000000,
-  "profit": 0
+  "profit": 0,
+  "price": 182000000
  },
- "ice skates rune": {
-  "itemTag": "RUNE_ICE_SKATES",
+ "RUNE_ICE_SKATES": {
+  "itemName": "Ice Skates Rune",
   "quantity": 2,
   "avgCost": 47000000,
   "profit": 0,
-  "price": 115000000
+  "price": 180000000
  },
- "doge wolf skin": {
-  "itemTag": "PET_SKIN_WOLF_DOGE",
+ "PET_SKIN_WOLF_DOGE": {
+  "itemName": "Doge Wolf Skin",
   "quantity": 2,
-  "price": 109999000,
   "avgCost": 49000000,
-  "profit": 0
+  "profit": 0,
+  "price": 93000000
  },
- "magic cube power orb skin": {
-  "itemTag": "MAGIC_CUBE_FLUX",
+ "MAGIC_CUBE_FLUX": {
+  "itemName": "Magic Cube Power Orb Skin",
   "quantity": 2,
-  "price": 147000000,
   "avgCost": 87500000,
-  "profit": 0
+  "profit": 0,
+  "price": 173500000
  },
- "sly fox skin": {
-  "itemTag": "SHADOW_ASSASSIN_SLY_FOX",
+ "SHADOW_ASSASSIN_SLY_FOX": {
+  "itemName": "Sly Fox Skin",
   "quantity": 1,
-  "price": 57000000,
   "avgCost": 38000000,
-  "profit": 0
+  "profit": 0,
+  "price": 0
  },
- "golden turtle egg orb skin": {
-  "itemTag": "GOLDEN_ANCIENT_EGG_FLUX",
+ "GOLDEN_ANCIENT_EGG_FLUX": {
+  "itemName": "Golden Turtle Egg Power Orb Skin",
   "quantity": 1,
   "avgCost": 45000000,
   "profit": 0,
-  "price": 55440000
+  "price": 50000000
  },
- "panda spirit skin": {
-  "itemTag": "PANDA_SPIRIT",
+ "PANDA_SPIRIT": {
+  "itemName": "Panda Spirit Skin",
   "quantity": 3,
-  "price": 170000000,
   "avgCost": 156500000,
-  "profit": 0
- },
- "husky wolf skin": {
-  "itemTag": "PET_SKIN_WOLF_HUSKY",
-  "quantity": 2,
-  "price": 110000000,
-  "avgCost": 107000000,
-  "profit": 0
- },
- "rainy day rune": {
-  "itemTag": "RUNE_RAINY_DAY",
-  "quantity": 2,
-  "price": 60000000,
-  "avgCost": 52000000,
-  "profit": 0
- },
- "beach ball orb skin": {
-  "itemTag": "BEACH_BALL_FLUX",
-  "quantity": 2,
-  "price": 68000000,
-  "avgCost": 63000000,
-  "profit": 0
- },
- "frost knight skin": {
-  "itemTag": "FROZEN_BLAZE_FROST_KNIGHT",
-  "quantity": 2,
-  "price": 65000000,
-  "avgCost": 83000000,
-  "profit": 0
- },
- "chromari skin": {
-  "itemTag": "PET_SKIN_SQUID_CHROMARI",
-  "quantity": 2,
-  "price": 58800000,
-  "avgCost": 70500000,
-  "profit": 0
- },
- "midnight dolphin skin": {
-  "itemTag": "PET_SKIN_DOLPHIN_MIDNIGHT",
-  "quantity": 1,
-  "avgCost": 71000000,
   "profit": 0,
-  "price": 50400000
+  "price": 162000000
  },
- "portal dye": {
-  "itemTag": "DYE_PORTAL",
-  "quantity": 4,
-  "price": 54000000,
-  "avgCost": 98000000,
-  "profit": 0
- },
- "ender knight skin": {
-  "itemTag": "FINAL_DESTINATION_ENDER_KNIGHT",
+ "PET_SKIN_WOLF_HUSKY": {
+  "itemName": "Husky Wolf Skin",
   "quantity": 2,
-  "price": 68000000,
+  "avgCost": 107000000,
+  "profit": 0,
+  "price": 99999999
+ },
+ "UNIQUE_RUNE_RAINY_DAY": {
+  "itemName": "Rainy Day Rune",
+  "quantity": 2,
+  "avgCost": 52000000,
+  "profit": 0,
+  "price": 58999999
+ },
+ "BEACH_BALL_FLUX": {
+  "itemName": "Beach Ball Power Orb Skin",
+  "quantity": 1,
+  "avgCost": 63000000,
+  "profit": 22000000,
+  "price": 68000000
+ },
+ "FROZEN_BLAZE_FROST_KNIGHT": {
+  "itemName": "Frost Knight Skin",
+  "quantity": 2,
+  "avgCost": 83000000,
+  "profit": 0,
+  "price": 48999999
+ },
+ "PET_SKIN_SQUID_CHROMARI": {
+  "itemName": "Chromari Squid Skin",
+  "quantity": 2,
+  "avgCost": 70500000,
+  "profit": 0,
+  "price": 59900000
+ },
+ "PET_SKIN_DOLPHIN_MIDNIGHT": {
+  "itemName": "Midnight Dolphin Skin",
+  "quantity": 2,
+  "avgCost": 60000000,
+  "profit": 0,
+  "price": 41000000
+ },
+ "DYE_PORTAL": {
+  "itemName": "Portal Dye",
+  "quantity": 4,
+  "avgCost": 98000000,
+  "profit": 0,
+  "price": 56000000
+ },
+ "FINAL_DESTINATION_ENDER_KNIGHT": {
+  "itemName": "Ender Knight Skin",
+  "quantity": 2,
   "avgCost": 67500000,
-  "profit": 0
+  "profit": 0,
+  "price": 69000000
  },
- "great shark magma lord skin": {
-  "itemTag": "GREAT_SHARK_MAGMA_LORD",
+ "GREAT_SHARK_MAGMA_LORD": {
+  "itemName": "Great Shark Magma Lord Skin",
   "quantity": 1,
-  "price": 118999000,
   "avgCost": 155000000,
-  "profit": 0
+  "profit": 0,
+  "price": 99990000
  },
- "snubfin dolphin skin": {
-  "itemTag": "PET_SKIN_DOLPHIN_SNUBFIN",
+ "PET_SKIN_DOLPHIN_SNUBFIN": {
+  "itemName": "Snubfin Dolphin Skin",
   "quantity": 1,
-  "price": 88000000,
   "avgCost": 76000000,
-  "profit": 0
+  "profit": 0,
+  "price": 65000000
  },
- "astronaut monkey skin": {
-  "itemTag": "PET_SKIN_MONKEY_ASTRONAUT",
+ "PET_SKIN_MONKEY_ASTRONAUT": {
+  "itemName": "Astronaut Monkey Skin",
   "quantity": 1,
-  "price": 220000000,
   "avgCost": 209000000,
-  "profit": 0
+  "profit": 0,
+  "price": 224999999
  },
- "choco magma cube skin": {
-  "itemTag": "PET_SKIN_MAGMA_CUBE_CHOCO_CUBE",
+ "PET_SKIN_MAGMA_CUBE_CHOCO_CUBE": {
+  "itemName": "Choco Magma Cube Skin",
   "quantity": 1,
   "avgCost": 125000000,
   "profit": 0,
-  "price": 137000000
+  "price": 125000000
  },
- "smoldering ember skin": {
-  "itemTag": "REKINDLED_EMBER_BURNING",
+ "REKINDLED_EMBER_BURNING": {
+  "itemName": "Smoldering Ember Skin",
   "quantity": 1,
-  "price": 69000000,
   "avgCost": 53000000,
-  "profit": 0
+  "profit": 0,
+  "price": 119000000
  },
- "doge plushie wolf skin": {
-  "itemTag": "PET_SKIN_WOLF_DOGE_PLUSHIE",
+ "PET_SKIN_WOLF_DOGE_PLUSHIE": {
+  "itemName": "Doge Plushie Wolf Skin",
   "quantity": 1,
-  "price": 37000000,
   "avgCost": 25000000,
-  "profit": 0
+  "profit": 0,
+  "price": 48999000
  },
- "pastel sky dye": {
-  "itemTag": "DYE_PASTEL_SKY",
+ "DYE_PASTEL_SKY": {
+  "itemName": "Pastel Sky Dye",
   "quantity": 3,
-  "price": 58000000,
   "avgCost": 69333333,
-  "profit": 0
+  "profit": 0,
+  "price": 45000000
  },
- "harlequin flying fish skin": {
-  "itemTag": "PET_SKIN_FLYING_FISH_HARLEQUIN",
+ "PET_SKIN_FLYING_FISH_HARLEQUIN": {
+  "itemName": "Harlequin Flying Fish Skin",
   "quantity": 1,
-  "price": 68500000,
   "avgCost": 67000000,
-  "profit": 0
+  "profit": 0,
+  "price": 64900000
  },
- "sandstorm cat skin": {
-  "itemTag": "BERSERKER_SANDSTORM_CAT",
+ "BERSERKER_SANDSTORM_CAT": {
+  "itemName": "Sandstorm Cat Skin",
   "quantity": 2,
-  "price": 41990000,
   "avgCost": 40000000,
-  "profit": 0
+  "profit": 0,
+  "price": 48888000
  },
- "lucky dye": {
-  "itemTag": "DYE_LUCKY",
+ "DYE_LUCKY": {
+  "itemName": "Lucky Dye",
   "quantity": 2,
-  "price": 67000000,
   "avgCost": 72500000,
-  "profit": 0
+  "profit": 0,
+  "price": 66699999
  },
- "cavern glacite golem skin": {
-  "itemTag": "PET_SKIN_GLACITE_GOLEM_CAVERN",
+ "PET_SKIN_GLACITE_GOLEM_CAVERN": {
+  "itemName": "Cavern Glacite Golem Skin",
   "quantity": 1,
-  "price": 112500000,
   "avgCost": 114000000,
-  "profit": 0
+  "profit": 0,
+  "price": 103000000
  },
- "rose dye": {
-  "itemTag": "DYE_ROSE",
+ "DYE_ROSE": {
+  "itemName": "Rose Dye",
   "quantity": 1,
-  "price": 64999000,
   "avgCost": 71700000,
-  "profit": 0
+  "profit": 0,
+  "price": 66999999
  },
- "redback skin": {
-  "itemTag": "TARANTULA_REDBACK",
+ "TARANTULA_REDBACK": {
+  "itemName": "Redback Skin",
   "quantity": 1,
-  "price": 88888888,
   "avgCost": 80000000,
-  "profit": 0
+  "profit": 0,
+  "price": 91999999
+ },
+ "SENTINEL_WARDEN": {
+  "itemName": "Sentinel Warden Skin",
+  "quantity": 1,
+  "avgCost": 425000000,
+  "profit": 20000000,
+  "price": 427000000
+ },
+ "BACKPACK_CAT_O_LANTERN": {
+  "itemName": "Cat-o-Lantern Skin",
+  "quantity": 1,
+  "avgCost": 17500000,
+  "profit": 0,
+  "price": 14850000
+ },
+ "PET_SKIN_MOLE_MINER": {
+  "itemName": "Miner Mole Skin",
+  "quantity": 1,
+  "avgCost": 85000000,
+  "profit": 0,
+  "price": 85999999
+ },
+ "GEMSTONE_DIVAN": {
+  "itemName": "Gemstone Divan Helmet Skin",
+  "quantity": 1,
+  "avgCost": 610000000,
+  "profit": 0,
+  "price": 660000000
+ },
+ "GLOSSY_MINERAL_HELMET_ROYAL": {
+  "itemName": "Royal Skin",
+  "quantity": 1,
+  "avgCost": 37000000,
+  "profit": 0,
+  "price": 35742133
  }
 }

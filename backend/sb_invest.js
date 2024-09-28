@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 });
 
 // https://developer.hypixel.net/dashboard
-let apiKey = 'dfd73605-38c7-4280-812e-162129f94311';
+let apiKey = '9f3e6e94-3649-4650-9d22-e43451a66737';
 
 //const apiUrl = `https://api.hypixel.net/skyblock/auctions?key=${apiKey}&item=${itemToTrack}`;
 
@@ -38,27 +38,25 @@ app.get('/', (req, res) => {
 // update the newest price for invested items
 app.get('/api/update', async (req, res) => {
   const items = JSON.parse(fs.readFileSync("./data/holding.json"));
-  // Get the first key from the object
   let totalCost = 0;
   let totalWorth = 0;
   const itemKeys = Object.keys(items);
-  // let itemTag;
-  // let apiUrl;  // will this better as no create and delete obj?
-
-  // Loop through the keys and access the corresponding values
 
   // Array to store all fetch promises
   const fetchPromises = itemKeys.map(key => {
-    const itemTag = items[key]['itemTag'];
-    const apiUrl = `https://sky.coflnet.com/api/item/price/${itemTag}/bin`;
+    const apiUrl = `https://sky.coflnet.com/api/item/price/${key}/bin`;
 
     totalCost += items[key]['quantity'] * items[key]['avgCost'];
 
     return fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
-        items[key]['price'] = data['lowest'];
-        totalWorth += items[key]['quantity'] * data['lowest'];
+        if (data && data['lowest'] !== undefined) {
+          items[key]['price'] = data['lowest'];
+          totalWorth += items[key]['quantity'] * data['lowest'];
+        } else {
+          console.error(`Error: Invalid data for itemTag ${key}`);
+        }
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -87,14 +85,14 @@ app.get('/api/update', async (req, res) => {
 
 // update your investment holdings reocrd
 app.post('/api/record', (req, res) => {
-  const { itemName, itemTag, itemQuantity, itemPrice, action} = req.body;
+  const { itemName, itemTag, itemQuantity, itemPrice, action } = req.body;
   const items = JSON.parse(fs.readFileSync("./data/holding.json"));
 
   // ensure valid input from user
-  if (!itemName || !itemQuantity || !itemPrice || !action) {
-      res.json({ status: "error", error: "Missing record data." });
-      return;
-  } 
+  if (!itemName || !itemTag || !itemQuantity || !itemPrice || !action) {
+    res.json({ status: "error", error: "Missing record data." });
+    return;
+  }
   const parsedQuantity = parseFloat(itemQuantity);
   if (isNaN(parsedQuantity)) {
     res.json({ status: "error", error: "Invalid item quantity." });
@@ -106,39 +104,29 @@ app.post('/api/record', (req, res) => {
     return;
   }
 
-  if (itemName in items) {
-    // can update incorrect itemTag
-    if (itemTag != "") {
-      items[itemName]['itemTag'] = itemTag;
-    }
+  if (itemTag in items) {
     if (action === "buy") {
-      items[itemName]['avgCost'] = (items[itemName]['avgCost'] * items[itemName]['quantity'] + parsedPrice * parsedQuantity) / (items[itemName]['quantity'] + parsedQuantity);
-      items[itemName]['quantity'] = parseFloat(items[itemName]['quantity']) + parsedQuantity;
+      items[itemTag]['avgCost'] = (items[itemTag]['avgCost'] * items[itemTag]['quantity'] + parsedPrice * parsedQuantity) / (items[itemTag]['quantity'] + parsedQuantity);
+      items[itemTag]['quantity'] = parseFloat(items[itemTag]['quantity']) + parsedQuantity;
     } else {
       // if holding < amount
-      if (items[itemName]['quantity'] < parsedQuantity) {
+      if (items[itemTag]['quantity'] < parsedQuantity) {
         res.json({ status: "error", error: "Not enough holding." });
         return;
       }
-      items[itemName]['profit'] = (itemPrice - items[itemName]['avgCost']) * parsedQuantity;
-      items[itemName]['quantity'] = parseFloat(items[itemName]['quantity']) - parsedQuantity;
+      items[itemTag]['profit'] = (itemPrice - items[itemTag]['avgCost']) * parsedQuantity;
+      items[itemTag]['quantity'] = parseFloat(items[itemTag]['quantity']) - parsedQuantity;
     }
   } else {
-    // new item
-    // new item need provide itemTag
-    if (!itemTag) {
-      res.json({ status: "error", error: "Missing item tag." });
-      return;
-    } 
     if (action === "sell") {
       res.json({ status: "error", error: "Cannot sell untracked item." });
       return;
-    }    
-    items[itemName] = { itemTag, quantity: parsedQuantity, price: parsedPrice, avgCost: parsedPrice, profit: 0 };
+    }
+    items[itemTag] = { itemName, quantity: parsedQuantity, price: parsedPrice, avgCost: parsedPrice, profit: 0 };
   }
 
   fs.writeFileSync("./data/holding.json", JSON.stringify(items, null, " "));
-  res.json({ status: "success"});
+  res.json({ status: "success" });
 });
 
 app.get('/api/firesale', (req, res) => {

@@ -5,7 +5,7 @@ import ItemList from '../components/ItemList';
 import '/styles/style.css';
 
 interface Item {
-  itemTag: string;
+  itemName: string;
   quantity: number;
   avgCost: number;
   profit: number;
@@ -13,7 +13,7 @@ interface Item {
 }
 
 function Home() {
-  const [items, setItems] = useState<Record<string, Item>[]>([]);
+  const [items, setItems] = useState<Record<string, Item>>({});
   const [totalCost, setTotalCost] = useState('');
   const [totalWorth, setTotalWorth] = useState('');
 
