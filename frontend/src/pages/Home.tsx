@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Timer from '../components/FiresaleTimer';
 import RecordForm from '../components/RecordForm';
 import ItemList from '../components/ItemList';
-import '/styles/style.css';
+import '../styles/style.css';
 import { Item } from '../types/Item';
 
 function Home() {

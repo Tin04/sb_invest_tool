@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, KeyboardEvent } from 'react';
-import '/styles/SearchBar.css';
+import '../styles/SearchBar.css';
 
 interface Suggestion {
   name: string;

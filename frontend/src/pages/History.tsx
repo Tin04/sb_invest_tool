@@ -3,7 +3,7 @@ import { Chart, registerables } from 'chart.js';
 import 'chartjs-adapter-date-fns';
 import { getTimeRangeText, getTimeUnit, calculateMovingAverage, calculateStatistics, calculateVolatility } from '../utils/historyHelpers.tsx';
 import SearchBar from '../components/SearchBar.tsx';
-import '/styles/style.css';
+import '../styles/style.css';
 
 Chart.register(...registerables);
 

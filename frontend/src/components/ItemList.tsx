@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import '/styles/style.css';
+import '../styles/style.css';
 import { Item } from '../types/Item';
 
 const ItemList = React.memo(({ items }: { items: Record<string, Item> }) => {

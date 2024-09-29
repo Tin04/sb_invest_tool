@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Card, CardContent, Typography, Button } from '@mui/material';
-import '/styles/Mayors.css';
+import '../styles/Mayors.css';
 
 interface Mayor {
   name: string;
