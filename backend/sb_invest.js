@@ -42,14 +42,21 @@ app.get('/api/update', async (req, res) => {
   let totalWorth = 0;
   const itemKeys = Object.keys(items);
 
-  // Array to store all fetch promises
   const fetchPromises = itemKeys.map(key => {
     const apiUrl = `https://sky.coflnet.com/api/item/price/${key}/bin`;
 
     totalCost += items[key]['quantity'] * items[key]['avgCost'];
 
     return fetch(apiUrl)
-      .then(response => response.json())
+      .then(response => response.text()) // Fetch as text first
+      .then(text => {
+        try {
+          return JSON.parse(text); // Try to parse the text as JSON
+        } catch (error) {
+          console.error(`Error parsing JSON for itemTag ${key}:`, error);
+          return null; // Return null if parsing fails
+        }
+      })
       .then(data => {
         if (data && data['lowest'] !== undefined) {
           items[key]['price'] = data['lowest'];
@@ -64,13 +71,8 @@ app.get('/api/update', async (req, res) => {
   });
 
   try {
-    // Wait for all fetch promises to resolve
     await Promise.all(fetchPromises);
-
-    // Save the updated data to the JSON file
     fs.writeFileSync("./data/holding.json", JSON.stringify(items, null, " "));
-
-    // Send the updated items in the response
     const result = {
       totalCost: totalCost,
       totalWorth: totalWorth,
