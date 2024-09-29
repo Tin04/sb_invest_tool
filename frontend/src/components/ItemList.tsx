@@ -1,13 +1,6 @@
 import React, { useMemo } from 'react';
 import '/styles/style.css';
-
-interface Item {
-  itemName: string;
-  quantity: number;
-  avgCost: number;
-  profit: number;
-  price: number;
-}
+import { Item } from '../types/Item';
 
 const ItemList = React.memo(({ items }: { items: Record<string, Item> }) => {
   const itemEntries = Object.entries(items);
