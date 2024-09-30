@@ -140,7 +140,12 @@ body {
 }
 
 #item-list {
-    border-radius: 5px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Add rounded corners to the table */
+    overflow: hidden; /* Ensure the rounded corners are visible */
+    margin-bottom: 20px; /* Add spacing under the list */
 }
 
 #item-list tr {
