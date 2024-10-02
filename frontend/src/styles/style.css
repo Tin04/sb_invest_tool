@@ -177,13 +177,20 @@ body {
 }
 
 #timer {
-    white-space: nowrap;
-    font-size: 24px;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-    border-radius: 4px;
-    display: inline-block;
+    background-color: #f8f9fa; /* Light background color */
+    border: 1px solid #dee2e6; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 16px; /* Padding inside the timer box */
+    text-align: center; /* Center the text */
+    font-family: 'Arial', sans-serif; /* Font style */
+    margin-bottom: 20px; /* Space below the timer */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+#timer #countdown {
+    font-size: 1.5em; /* Larger font size for the countdown */
+    font-weight: bold; /* Bold text */
+    color: #dc3545; /* Red color for the countdown text */
 }
 
 /* when screen width <= 600px, change the layout of #item-list-header to a vertical column and aligns contents to the left. */
