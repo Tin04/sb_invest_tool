@@ -34,9 +34,9 @@ function Home() {
     });
   };
 
-  const calculateTotals = (cost: number, worth: number) => {
-    setTotalCost(cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-    setTotalWorth(worth.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+  const calculateTotals = (cost: string, worth: string) => {
+    setTotalCost(cost);
+    setTotalWorth(worth);
   };
 
   const handleUpdatePrices = async () => {

@@ -40,6 +40,7 @@ app.get('/api/update', async (req, res) => {
   const items = JSON.parse(fs.readFileSync("./data/holding.json"));
   let totalCost = 0;
   let totalWorth = 0;
+  let hasError = false; // Flag to track errors
   const itemKeys = Object.keys(items);
 
   const fetchPromises = itemKeys.map(key => {
@@ -54,6 +55,7 @@ app.get('/api/update', async (req, res) => {
           return JSON.parse(text); // Try to parse the text as JSON
         } catch (error) {
           console.error(`Error parsing JSON for itemTag ${key}:`, error);
+          hasError = true; // Set error flag
           return null; // Return null if parsing fails
         }
       })
@@ -63,10 +65,12 @@ app.get('/api/update', async (req, res) => {
           totalWorth += items[key]['quantity'] * data['lowest'];
         } else {
           console.error(`Error: Invalid data for itemTag ${key}`);
+          hasError = true; // Set error flag
         }
       })
       .catch(error => {
         console.error('Error fetching data:', error);
+        hasError = true; // Set error flag
       });
   });
 
@@ -74,8 +78,8 @@ app.get('/api/update', async (req, res) => {
     await Promise.all(fetchPromises);
     fs.writeFileSync("./data/holding.json", JSON.stringify(items, null, " "));
     const result = {
-      totalCost: totalCost,
-      totalWorth: totalWorth,
+      totalCost: totalCost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+      totalWorth: (hasError ? totalWorth + ' (Incomplete)' : totalWorth).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), // Set totalWorth to 'Incomplete' if any error occurred
       items: items
     };
     res.json(result);
