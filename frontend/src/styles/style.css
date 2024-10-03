@@ -115,7 +115,7 @@ body {
     opacity: 0.8;
 }
 
-
+/* Home */
 #content {
     display: flex;
     flex-direction: column;
@@ -176,26 +176,93 @@ body {
     cursor: pointer;
 }
 
+/* Firesale Timer */
 #timer {
-    white-space: nowrap;
-    background-color: #333;
-    color: #fff;
-    display: inline-block;
-    border: 1px solid #dee2e6; /* Light border */
-    border-radius: 8px; /* Rounded corners */
-    padding: 16px; /* Padding inside the timer box */
-    text-align: center; /* Center the text */
-    font-size: 24px;
-    font-family: 'Arial', sans-serif; /* Font style */
-    margin-bottom: 20px; /* Space below the timer */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background-color: var(--bg-color);
+  border: 1px solid var(--text-color);
+  border-radius: 8px;
+  padding: 16px;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
 }
 
-#timer #countdown {
-    font-size: 1.2em; /* Larger font size for the countdown */
-    font-weight: bold; /* Bold text */
-    color: white; /* Red color for the countdown text */
+#timer h2 {
+  text-align: center;
+  color: var(--text-color);
+  margin-top: 0;
 }
+
+.timer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.countdown {
+  font-weight: bold;
+  color: #dc3545; /* You might want to keep this color consistent across themes */
+}
+
+.dropdown-arrow {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  color: var(--text-color);
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.dropdown-content.open {
+  max-height: 200px; /* Adjust this value based on your needs */
+}
+
+.dropdown-scroll {
+  max-height: 200px; /* Should match the max-height of .dropdown-content.open */
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-color) var(--bg-color);
+}
+
+.dropdown-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-scroll::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+.dropdown-scroll::-webkit-scrollbar-thumb {
+  background: var(--text-color);
+  border-radius: 3px;
+}
+
+.dropdown-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--link-color);
+}
+
+.firesale-item {
+  background-color: var(--bg-color);
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.firesale-item h3 {
+  margin-top: 0;
+  color: var(--text-color);
+}
+
+/*    */
 /* when screen width <= 600px, change the layout of #item-list-header to a vertical column and aligns contents to the left. */
 @media (max-width: 600px) {
     #item-list-header {
@@ -225,6 +292,7 @@ body {
 
 }
 
+/* Record Form */
 #dropdown-form {
     margin: 20px;
     width: 100%;

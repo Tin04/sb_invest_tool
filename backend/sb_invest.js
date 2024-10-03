@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 });
 
 // https://developer.hypixel.net/dashboard
-let apiKey = '9f3e6e94-3649-4650-9d22-e43451a66737';
+let apiKey = 'd12aadac-160a-4779-86ae-7b1a484946ff';
 
 //const apiUrl = `https://api.hypixel.net/skyblock/auctions?key=${apiKey}&item=${itemToTrack}`;
 
@@ -180,14 +180,15 @@ app.get('/api/firesale', (req, res) => {
   fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
-      if (data['success'] === false) {
-        res.json({ status: "error", error: "Fail to fetch data" });
+      if (data['success'] === true) {
+        res.json({ success: true, sales: data['sales'] });
       } else {
-        res.json({ status: "success", data: data['sales'][0] });
+        res.json({ success: false, error: "Failed to fetch firesale data" });
       }
     })
     .catch(error => {
       console.error('Error fetching data:', error);
+      res.status(500).json({ success: false, error: "Internal server error" });
     });
 });
 
