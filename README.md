@@ -46,17 +46,12 @@ This will ensure that your application can access the backend host correctly. Yo
 
 ## Usage
 To run the application locally, please follow the steps:
-1. Visit https://developer.hypixel.net/dashboard and get a Development Key
-2. Open \backend\sb_invest.js and modify the following code:
-    ``` code
-    let apiKey = 'YOUR_DEVELOPMENT_KEY';
-    ```
-3. Navigate to the \backend directory and start the backend server:
+1. Navigate to the \backend directory and start the backend server:
     ```bash
     npm start
     ```
-4. Open a new terminal, navigate to the \frontend directory:
+2. Open a new terminal, navigate to the \frontend directory:
     ```bash
     npm run dev
     ```
-5. Ctrl+click the provided URL, e.g. http://localhost:5173/, to access the web app.
+3. Ctrl+click the provided URL, e.g. http://localhost:5173/, to access the web app.

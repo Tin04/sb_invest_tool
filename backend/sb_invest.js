@@ -22,7 +22,6 @@ app.use((req, res, next) => {
 });
 
 // https://developer.hypixel.net/dashboard
-let apiKey = 'd12aadac-160a-4779-86ae-7b1a484946ff';
 
 // homepage show item list
 app.get('/', (req, res) => {
@@ -73,7 +72,7 @@ app.get('/api/update', async (req, res) => {
     fs.writeFileSync("./data/holding.json", JSON.stringify(items, null, " "));
     const result = {
       totalCost: totalCost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-      totalWorth: (hasError ? totalWorth + ' (Incomplete)' : totalWorth).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), // Set totalWorth to 'Incomplete' if any error occurred
+      totalWorth: (hasError ? totalWorth + ' (Incomplete, please update list again)' : totalWorth).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), // Set totalWorth to 'Incomplete' if any error occurred
       items: items
     };
     res.json(result);
