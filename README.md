@@ -28,14 +28,14 @@ To set up the project locally, follow these steps:
    ```bash
    cd skyblock-invest-tool
    ```
-3. Install dependencies in both /frontend and /backend directories:
+3. Install dependencies in both \frontend and \backend directories:
    ```bash
    npm install
    ```
 4. Set up environment variables (see next section)
 
 ## Environment Variables
-To configure the application, you need to create a `.env.local` file under /frontend. This file will store your environment variables.
+To configure the application, you need to create a `.env.local` file under \frontend. This file will store your environment variables.
 
 1. Create a file named `.env.local` in the root of your project directory.
 2. Add the following line to the file:
@@ -46,12 +46,17 @@ This will ensure that your application can access the backend host correctly. Yo
 
 ## Usage
 To run the application locally, please follow the steps:
-1. Navigate to the /backend directory and start the backend server:
+1. Visit https://developer.hypixel.net/dashboard and get a Development Key
+2. Open \backend\sb_invest.js and modify the following code:
+    ``` code
+    let apiKey = 'YOUR_DEVELOPMENT_KEY';
+    ```
+3. Navigate to the \backend directory and start the backend server:
     ```bash
     npm start
     ```
-2. Open a new terminal, navigate to the /frontend directory:
+4. Open a new terminal, navigate to the \frontend directory:
     ```bash
     npm run dev
     ```
-3. Ctrl+click the provided URL, e.g. http://localhost:5173/, to access the web app.
+5. Ctrl+click the provided URL, e.g. http://localhost:5173/, to access the web app.
