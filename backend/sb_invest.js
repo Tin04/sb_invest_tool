@@ -24,12 +24,6 @@ app.use((req, res, next) => {
 // https://developer.hypixel.net/dashboard
 let apiKey = 'd12aadac-160a-4779-86ae-7b1a484946ff';
 
-//const apiUrl = `https://api.hypixel.net/skyblock/auctions?key=${apiKey}&item=${itemToTrack}`;
-
-// https://sky.coflnet.com/api/auctions/tag/{ITEM_ID}/active/bin
-// assume i have a list of item ids
-// for each item id
-
 // homepage show item list
 app.get('/', (req, res) => {
   res.redirect('/api/update');
